@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -63,6 +65,7 @@ public class menu {
 				frame.dispose();
 				frame.setVisible(false);
 				tabuleiro.main(null);
+				
 			}
 		});
 		btnIniciar.setVerticalAlignment(SwingConstants.BOTTOM);
