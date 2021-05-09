@@ -28,6 +28,7 @@ public class tabuleiro {
 	final static Partida partida = new Partida();
 	Paciencia paciencia = partida.retornaPacienciaAtual();
 	MonteDeCartas pilhaRecebida = new MonteDeCartas();
+	
 
 	private JFrame frame;
 
@@ -60,7 +61,7 @@ public class tabuleiro {
 	private void initialize() {
 		partida.iniciarPartida();
 		paciencia = partida.retornaPacienciaAtual();
-		
+
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(34, 139, 34));
 		frame.setBounds(100, 100, 450, 300);
@@ -74,7 +75,6 @@ public class tabuleiro {
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
 					partida.iniciarPartida();
-					
 				}
 			}
 		});
@@ -85,6 +85,7 @@ public class tabuleiro {
 		JButton btnSairDoJogo = new JButton("Sair do Jogo");
 		btnSairDoJogo.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnSairDoJogo.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				frame.setVisible(false);
@@ -92,11 +93,13 @@ public class tabuleiro {
 				menu.main(null);
 			}
 		});
+
 		btnSairDoJogo.setBounds(339, 0, 95, 23);
 		frame.getContentPane().add(btnSairDoJogo);
 
 		JButton btnQtsVirar = new JButton("Qts. virar do est.");
 		btnQtsVirar.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				String[] values = { "1", "3" };
 				Object selected = JOptionPane.showInputDialog(null, "Virar 1 ou 3 cartas?", "Selection",
@@ -108,6 +111,7 @@ public class tabuleiro {
 			}
 
 		});
+
 		btnQtsVirar.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnQtsVirar.setBounds(131, 0, 115, 23);
 		frame.getContentPane().add(btnQtsVirar);
@@ -115,7 +119,7 @@ public class tabuleiro {
 		JLabel lblF1 = new JLabel("Funda\u00E7\u00E3o 1");
 		lblF1.setForeground(Color.WHITE);
 		lblF1.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblF1.setBounds(210, 34, 46, 14);
+		lblF1.setBounds(200, 34, 46, 14);
 		frame.getContentPane().add(lblF1);
 
 		JLabel lblF2 = new JLabel("Funda\u00E7\u00E3o 2");
@@ -139,64 +143,160 @@ public class tabuleiro {
 		JLabel lblEstoque = new JLabel("Estoque");
 		lblEstoque.setForeground(Color.WHITE);
 		lblEstoque.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblEstoque.setBounds(10, 33, 46, 14);
+		lblEstoque.setBounds(10, 33, 30, 14);
 		frame.getContentPane().add(lblEstoque);
 
 		JLabel lblDescarte = new JLabel("Descarte");
 		lblDescarte.setForeground(Color.WHITE);
 		lblDescarte.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblDescarte.setBounds(72, 33, 46, 14);
+		lblDescarte.setBounds(72, 33, 30, 14);
 		frame.getContentPane().add(lblDescarte);
 
 		JLabel lblTableau_1 = new JLabel("Tableau 1");
 		lblTableau_1.setForeground(Color.WHITE);
 		lblTableau_1.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_1.setBounds(10, 236, 46, 14);
+		lblTableau_1.setBounds(10, 236, 38, 14);
 		frame.getContentPane().add(lblTableau_1);
 
 		JLabel lblTableau_2 = new JLabel("Tableau 2");
 		lblTableau_2.setForeground(Color.WHITE);
 		lblTableau_2.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_2.setBounds(72, 235, 46, 14);
+		lblTableau_2.setBounds(72, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_2);
 
 		JLabel lblTableau_3 = new JLabel("Tableau 3");
 		lblTableau_3.setForeground(Color.WHITE);
 		lblTableau_3.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_3.setBounds(131, 235, 46, 14);
+		lblTableau_3.setBounds(131, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_3);
 
 		JLabel lblTableau_4 = new JLabel("Tableau 4");
 		lblTableau_4.setForeground(Color.WHITE);
 		lblTableau_4.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_4.setBounds(187, 236, 46, 14);
+		lblTableau_4.setBounds(187, 236, 38, 14);
 		frame.getContentPane().add(lblTableau_4);
 
 		JLabel lblTableau_5 = new JLabel("Tableau 5");
 		lblTableau_5.setForeground(Color.WHITE);
 		lblTableau_5.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_5.setBounds(246, 235, 46, 14);
+		lblTableau_5.setBounds(246, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_5);
 
 		JLabel lblTableau_6 = new JLabel("Tableau 6");
 		lblTableau_6.setForeground(Color.WHITE);
 		lblTableau_6.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_6.setBounds(308, 235, 46, 14);
+		lblTableau_6.setBounds(308, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_6);
 
 		JLabel lblTableau_7 = new JLabel("Tableau 7");
 		lblTableau_7.setForeground(Color.WHITE);
 		lblTableau_7.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		lblTableau_7.setBounds(364, 235, 46, 14);
+		lblTableau_7.setBounds(364, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_7);
 
 		colocaDescarteNaTela();
 		colocaEstoqueNaTela();
 		colocaFundacoesNaTela();
 		colocaFileirasNaTela();
+		insereQuantDeCartas();
 
 	}
 
+	public void insereQuantDeCartas() {
+		int tab1 = paciencia.getMonteFileira(0).size();
+		JLabel t1Number = new JLabel("("+tab1+")");
+		t1Number.setForeground(Color.WHITE);
+		t1Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t1Number.setBounds(45, 235, 17, 14);
+		frame.getContentPane().add(t1Number);
+
+		int tab2 = paciencia.getMonteFileira(1).size();
+		JLabel t2Number = new JLabel("("+tab2+")");
+		t2Number.setForeground(Color.WHITE);
+		t2Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t2Number.setBounds(106, 235, 17, 14);
+		frame.getContentPane().add(t2Number);
+
+		int tab3 = paciencia.getMonteFileira(2).size();
+		JLabel t3Number = new JLabel("("+tab3+")");
+		t3Number.setForeground(Color.WHITE);
+		t3Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t3Number.setBounds(165, 235, 17, 14);
+		frame.getContentPane().add(t3Number);
+
+		int tab4 = paciencia.getMonteFileira(3).size();
+		JLabel t4Number = new JLabel("("+tab4+")");
+		t4Number.setForeground(Color.WHITE);
+		t4Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t4Number.setBounds(219, 235, 17, 14);
+		frame.getContentPane().add(t4Number);
+
+		int tab5 = paciencia.getMonteFileira(4).size();
+		JLabel t5Number = new JLabel("("+tab5+")");
+		t5Number.setForeground(Color.WHITE);
+		t5Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t5Number.setBounds(281, 235, 17, 14);
+		frame.getContentPane().add(t5Number);
+
+		int tab6 = paciencia.getMonteFileira(5).size();
+		JLabel t6Number = new JLabel("("+tab6+")");
+		t6Number.setForeground(Color.WHITE);
+		t6Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t6Number.setBounds(339, 235, 17, 14);
+		frame.getContentPane().add(t6Number);
+
+		int tab7 = paciencia.getMonteFileira(6).size();
+		JLabel t7Number = new JLabel("("+tab7+")");
+		t7Number.setForeground(Color.WHITE);
+		t7Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		t7Number.setBounds(396, 235, 17, 14);
+		frame.getContentPane().add(t7Number);
+		
+		int est = paciencia.getMonteEstoque().size();
+		JLabel estNumber = new JLabel("("+est+")");
+		estNumber.setForeground(Color.WHITE);
+		estNumber.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		estNumber.setBounds(39, 33, 17, 14);
+		frame.getContentPane().add(estNumber);
+		
+		int desc = paciencia.getMonteDescarte().size();
+		JLabel descNumber = new JLabel("("+desc+")");
+		descNumber.setForeground(Color.WHITE);
+		descNumber.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		descNumber.setBounds(106, 33, 17, 14);
+		frame.getContentPane().add(descNumber);
+		
+		int f1 = paciencia.getMonteFundacao(0).size();
+		JLabel f1Number = new JLabel("("+f1+")");
+		f1Number.setForeground(Color.WHITE);
+		f1Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		f1Number.setBounds(246, 34, 17, 14);
+		frame.getContentPane().add(f1Number);
+		
+		int f2 = paciencia.getMonteFundacao(1).size();
+		JLabel f2Number = new JLabel("("+f2+")");
+		f2Number.setForeground(Color.WHITE);
+		f2Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		f2Number.setBounds(305, 33, 17, 14);
+		frame.getContentPane().add(f2Number);
+		
+		int f3 = paciencia.getMonteFundacao(2).size();
+		JLabel f3Number = new JLabel("("+f3+")");
+		f3Number.setForeground(Color.WHITE);
+		f3Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		f3Number.setBounds(361, 33, 17, 14);
+		frame.getContentPane().add(f3Number);
+		
+		int f4 = paciencia.getMonteFundacao(3).size();
+		JLabel f4Number = new JLabel("("+f4+")");
+		f4Number.setForeground(Color.WHITE);
+		f4Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		f4Number.setBounds(417, 34, 17, 14);
+		frame.getContentPane().add(f4Number);
+	}
+
+	
+	
 	public void colocaDescarteNaTela() {
 		pilhaRecebida = paciencia.getMonteDescarte();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
