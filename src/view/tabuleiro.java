@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 public class tabuleiro {
 
 	final static Partida partida = new Partida();
-	final static Paciencia paciencia = new Paciencia();
+	Paciencia paciencia = partida.retornaPacienciaAtual();
 	MonteDeCartas pilhaRecebida = new MonteDeCartas();
 
 	private JFrame frame;
@@ -59,6 +59,8 @@ public class tabuleiro {
 	 */
 	private void initialize() {
 		partida.iniciarPartida();
+		paciencia = partida.retornaPacienciaAtual();
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(34, 139, 34));
 		frame.setBounds(100, 100, 450, 300);
@@ -72,6 +74,7 @@ public class tabuleiro {
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
 					partida.iniciarPartida();
+					
 				}
 			}
 		});
@@ -99,7 +102,6 @@ public class tabuleiro {
 				Object selected = JOptionPane.showInputDialog(null, "Virar 1 ou 3 cartas?", "Selection",
 						JOptionPane.DEFAULT_OPTION, null, values, "0");
 				if (selected != null) {// null if the user cancels.
-					// do something
 					int qtd = Integer.parseInt((String) selected);
 					partida.definirQtdVirarEstoque(qtd);
 				}
@@ -330,7 +332,7 @@ public class tabuleiro {
 		tab6.setBounds(308, 171, 46, 64);
 		frame.getContentPane().add(tab6);
 
-		pilhaRecebida = paciencia.getMonteFileira(5);
+		pilhaRecebida = paciencia.getMonteFileira(6);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		JLabel tab7 = new JLabel("");
 		img = retornaFotoDaCarta(carta);

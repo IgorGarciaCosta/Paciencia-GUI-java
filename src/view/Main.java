@@ -245,7 +245,7 @@ public class Main {
 						opcao = entrada.next();
 
 						if (opcao.equals("1")) {
-							//partida.iniciarPartida();
+							partida.iniciarPartida();
 						}
 					} else if (opcao.equals("5")) {
 						// Opção de sair da partida e voltar ao menu principal.

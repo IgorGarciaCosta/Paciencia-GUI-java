@@ -14,6 +14,10 @@ public class Partida {
 		this.paciencia = new Paciencia();
 	}
 	
+	public Paciencia retornaPacienciaAtual() {
+		return this.paciencia;
+	}
+	
 	public void encerrarPartida() {
 		this.paciencia = null;
 	}
