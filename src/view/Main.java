@@ -244,8 +244,9 @@ public class Main {
 						System.out.print("> Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
 						opcao = entrada.next();
 
-						if (opcao.equals("1"))
-							partida.iniciarPartida();
+						if (opcao.equals("1")) {
+							//partida.iniciarPartida();
+						}
 					} else if (opcao.equals("5")) {
 						// Opção de sair da partida e voltar ao menu principal.
 						System.out.print(

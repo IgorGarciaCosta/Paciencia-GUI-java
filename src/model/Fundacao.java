@@ -43,4 +43,5 @@ public class Fundacao extends MonteDeCartas{
 		return (cartas.size() == 13);
 	}
 	
+	
 }

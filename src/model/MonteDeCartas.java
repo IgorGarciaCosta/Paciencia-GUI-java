@@ -77,4 +77,9 @@ public class MonteDeCartas {
 		return "";
 	}
 	
+
+	public int size() {
+		return cartas.size();
+	}
+	
 }
