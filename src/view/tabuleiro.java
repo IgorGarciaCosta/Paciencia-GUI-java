@@ -74,7 +74,9 @@ public class tabuleiro {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
+					partida.encerrarPartida();
 					partida.iniciarPartida();
+					tabuleiro.main(null);
 				}
 			}
 		});
