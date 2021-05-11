@@ -76,6 +76,8 @@ public class tabuleiro {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
+					frame.dispose();
+					frame.setVisible(false);
 					partida.encerrarPartida();
 					partida.iniciarPartida();
 					tabuleiro.main(null);
@@ -687,56 +689,56 @@ public class tabuleiro {
 				case "est":
 
 					String[] values1 = { "Descarte" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Estoque",
 							JOptionPane.DEFAULT_OPTION, null, values1, "0");
 					break;
 				case "desc":
 					String[] values2 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Descarte",
 							JOptionPane.DEFAULT_OPTION, null, values2, "0");
 					break;
 
 				case "t1":
 					String[] values3 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 2",
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 1",
 							JOptionPane.DEFAULT_OPTION, null, values3, "0");
 					break;
 				case "t2":
 					String[] values4 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 2",
 							JOptionPane.DEFAULT_OPTION, null, values4, "0");
 					break;
 				case "t3":
 					String[] values5 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 3",
 							JOptionPane.DEFAULT_OPTION, null, values5, "0");
 					break;
 				case "t4":
 					String[] values6 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 4",
 							JOptionPane.DEFAULT_OPTION, null, values6, "0");
 					break;
 				case "t5":
 					String[] values7 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 5",
 							JOptionPane.DEFAULT_OPTION, null, values7, "0");
 					break;
 				case "t6":
 					String[] values8 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 6",
 							JOptionPane.DEFAULT_OPTION, null, values8, "0");
 					break;
 				case "t7":
 					String[] values9 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Movimentação",
+					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 7",
 							JOptionPane.DEFAULT_OPTION, null, values9, "0");
 					break;
 				}
