@@ -11,6 +11,7 @@ import model.Carta;
 import model.MonteDeCartas;
 import model.Naipe;
 import model.Numeracao;
+import controller.ControladorDeUpdateDePagina;
 import controller.Paciencia;
 
 import javax.swing.ImageIcon;
@@ -20,6 +21,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
@@ -27,8 +33,9 @@ import java.awt.Image;
 import javax.swing.JLabel;
 
 public class tabuleiro {
-
-	final static Partida partida = new Partida();
+	// PROB: QUERO DAR RELOAD NA PAG. SEM INSTANCIAR DE NOVO O BARALHO
+	ControladorDeUpdateDePagina controle = new ControladorDeUpdateDePagina();
+	static Partida partida = new Partida();
 	Paciencia paciencia = partida.retornaPacienciaAtual();
 	MonteDeCartas pilhaRecebida = new MonteDeCartas();
 
@@ -57,10 +64,17 @@ public class tabuleiro {
 		initialize();
 	}
 
+	public void atualizaPagina() {
+		frame.dispose();
+		frame.setVisible(false);
+		tabuleiro.main(null);
+	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
 		partida.iniciarPartida();
 		paciencia = partida.retornaPacienciaAtual();
 
@@ -70,17 +84,25 @@ public class tabuleiro {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizaPagina();
+			}
+		});
+		btnNewButton.setBounds(117, 78, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+
 		JButton btnNovoJogo = new JButton("Novo Jogo");
 		btnNovoJogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
-					frame.dispose();
-					frame.setVisible(false);
+					controle.setVar(true);
 					partida.encerrarPartida();
 					partida.iniciarPartida();
-					tabuleiro.main(null);
+					atualizaPagina();
 				}
 			}
 		});
@@ -299,6 +321,7 @@ public class tabuleiro {
 		f4Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		f4Number.setBounds(417, 34, 17, 14);
 		frame.getContentPane().add(f4Number);
+
 	}
 
 	public void colocaDescarteNaTela() {
@@ -344,7 +367,6 @@ public class tabuleiro {
 			fund1.setIcon(new ImageIcon(newImg));
 			fund1.setBounds(378, 58, 46, 64);
 			frame.getContentPane().add(fund1);
-			perguntaPraOndeMover(fund1, carta, "f1");
 		}
 
 		pilhaRecebida = paciencia.getMonteFundacao(1);
@@ -356,7 +378,6 @@ public class tabuleiro {
 			fund2.setIcon(new ImageIcon(newImg));
 			fund2.setBounds(322, 59, 46, 64);
 			frame.getContentPane().add(fund2);
-			perguntaPraOndeMover(fund2, carta, "f2");
 		}
 
 		pilhaRecebida = paciencia.getMonteFundacao(2);
@@ -368,7 +389,6 @@ public class tabuleiro {
 			fund3.setIcon(new ImageIcon(newImg));
 			fund3.setBounds(266, 59, 46, 64);
 			frame.getContentPane().add(fund3);
-			perguntaPraOndeMover(fund3, carta, "f3");
 		}
 
 		pilhaRecebida = paciencia.getMonteFundacao(3);
@@ -380,7 +400,6 @@ public class tabuleiro {
 			fund4.setIcon(new ImageIcon(newImg));
 			fund4.setBounds(210, 59, 46, 64);
 			frame.getContentPane().add(fund4);
-			perguntaPraOndeMover(fund4, carta, "f4");
 		}
 
 	}
@@ -685,18 +704,21 @@ public class tabuleiro {
 			public void mouseClicked(MouseEvent e) {
 				String[] values = {};
 				Object selected = null;
+				int idOrigem = 0;
 				switch (pilhaClicada) {
 				case "est":
 
 					String[] values1 = { "Descarte" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Estoque",
 							JOptionPane.DEFAULT_OPTION, null, values1, "0");
+					idOrigem = 1;
 					break;
 				case "desc":
 					String[] values2 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Descarte",
 							JOptionPane.DEFAULT_OPTION, null, values2, "0");
+					idOrigem = 2;
 					break;
 
 				case "t1":
@@ -704,47 +726,53 @@ public class tabuleiro {
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 1",
 							JOptionPane.DEFAULT_OPTION, null, values3, "0");
+					idOrigem = 7;
 					break;
 				case "t2":
 					String[] values4 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 2",
 							JOptionPane.DEFAULT_OPTION, null, values4, "0");
+					idOrigem = 8;
 					break;
 				case "t3":
 					String[] values5 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 3",
 							JOptionPane.DEFAULT_OPTION, null, values5, "0");
+					idOrigem = 9;
 					break;
 				case "t4":
 					String[] values6 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 5", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 4",
 							JOptionPane.DEFAULT_OPTION, null, values6, "0");
+					idOrigem = 10;
 					break;
 				case "t5":
 					String[] values7 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 6", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 5",
 							JOptionPane.DEFAULT_OPTION, null, values7, "0");
+					idOrigem = 11;
 					break;
 				case "t6":
 					String[] values8 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 7" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 6",
 							JOptionPane.DEFAULT_OPTION, null, values8, "0");
+					idOrigem = 12;
 					break;
 				case "t7":
 					String[] values9 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6" };
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 7",
 							JOptionPane.DEFAULT_OPTION, null, values9, "0");
+					idOrigem = 13;
 					break;
 				}
 
 				if (selected != null) {// null if the user cancels.
-					// mover carta
 					System.out.print(selected);
 				}
 			}

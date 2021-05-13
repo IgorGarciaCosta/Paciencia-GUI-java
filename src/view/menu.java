@@ -65,7 +65,6 @@ public class menu {
 				frame.dispose();
 				frame.setVisible(false);
 				tabuleiro.main(null);
-				
 			}
 		});
 		btnIniciar.setVerticalAlignment(SwingConstants.BOTTOM);
