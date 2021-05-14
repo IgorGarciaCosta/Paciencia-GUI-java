@@ -11,7 +11,7 @@ import model.Carta;
 import model.MonteDeCartas;
 import model.Naipe;
 import model.Numeracao;
-import controller.ControladorDeUpdateDePagina;
+//import controller.ControladorDeUpdateDePagina;
 import controller.Paciencia;
 
 import javax.swing.ImageIcon;
@@ -32,12 +32,37 @@ import java.awt.Image;
 
 import javax.swing.JLabel;
 
+class ControladorDeUpdateDePagina {
+	static boolean novoJogoClicado = true;
+
+	private static final ControladorDeUpdateDePagina SINGLE_INSTANCE = new ControladorDeUpdateDePagina();
+
+	public ControladorDeUpdateDePagina() {
+
+	}
+
+	public static ControladorDeUpdateDePagina getInstance() {
+		return SINGLE_INSTANCE;
+	}
+
+	public static void setVar(boolean novoValor) {
+		novoJogoClicado = novoValor;
+	}
+
+	public static boolean getVar() {
+		return novoJogoClicado;
+	}
+
+}
+
+
+
 public class tabuleiro {
 	// PROB: QUERO DAR RELOAD NA PAG. SEM INSTANCIAR DE NOVO O BARALHO
-	ControladorDeUpdateDePagina controle = new ControladorDeUpdateDePagina();
-	static Partida partida = new Partida();
-	Paciencia paciencia = partida.retornaPacienciaAtual();
-	MonteDeCartas pilhaRecebida = new MonteDeCartas();
+	// ControladorDeUpdateDePagina controle = new ControladorDeUpdateDePagina();
+	static Partida partida = null;
+	Paciencia paciencia = null;
+	MonteDeCartas pilhaRecebida = null;
 
 	private JFrame frame;
 
@@ -75,8 +100,16 @@ public class tabuleiro {
 	 */
 	private void initialize() {
 
-		partida.iniciarPartida();
+		if (ControladorDeUpdateDePagina.getVar()) {//se foi clicado o botão de novo jogo
+			partida = inicializaERetornaPartida();
+			paciencia = inicializaERetornaPaciencia();
+			pilhaRecebida = inicializaERetornaMonteDeCartas();
+			partida.iniciarPartida();
+		}
+		
 		paciencia = partida.retornaPacienciaAtual();
+
+		System.out.print(" Controle:" + ControladorDeUpdateDePagina.getVar());
 
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(34, 139, 34));
@@ -87,6 +120,7 @@ public class tabuleiro {
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ControladorDeUpdateDePagina.setVar(false);
 				atualizaPagina();
 			}
 		});
@@ -99,7 +133,7 @@ public class tabuleiro {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
-					controle.setVar(true);
+					ControladorDeUpdateDePagina.setVar(true);
 					partida.encerrarPartida();
 					partida.iniciarPartida();
 					atualizaPagina();
@@ -777,5 +811,19 @@ public class tabuleiro {
 				}
 			}
 		});
+	}
+
+	
+	public Partida inicializaERetornaPartida() {
+		 Partida partida = new Partida();
+		 return partida;
+	}
+	public Paciencia inicializaERetornaPaciencia() {
+		Paciencia paciencia = partida.retornaPacienciaAtual();
+		 return paciencia;
+	}
+	public MonteDeCartas inicializaERetornaMonteDeCartas() {
+		MonteDeCartas pilhaRecebida = new MonteDeCartas();
+		 return pilhaRecebida;
 	}
 }
