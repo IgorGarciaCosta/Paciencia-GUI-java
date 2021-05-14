@@ -733,6 +733,61 @@ public class tabuleiro {
 		return img;
 	}
 
+	public void moveCadaCarta(String[] opcoesDeDestino, String nomePilhaOrigem, int idOrigemRecebido) {
+		String[] values1 = opcoesDeDestino;
+		Object selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", nomePilhaOrigem,
+				JOptionPane.DEFAULT_OPTION, null, values1, "0");
+		int idOrigem = idOrigemRecebido;
+		int idDestino = 0;
+		if (selected != null) {
+			switch ((String) selected) {
+			case "Estoque":
+				idDestino = 1;
+				break;
+			case "Descarte":
+				idDestino = 2;
+				break;
+			case "Fundação1":
+				idDestino = 3;
+				break;
+			case "Fundação2":
+				idDestino = 4;
+				break;
+			case "Fundação3":
+				idDestino = 5;
+				break;
+			case "Fundação4":
+				idDestino = 6;
+				break;
+			case "Fileira1":
+				idDestino = 7;
+				break;
+			case "Fileira2":
+				idDestino = 8;
+				break;
+			case "Fileira3":
+				idDestino = 9;
+				break;
+			case "Fileira4":
+				idDestino = 10;
+				break;
+			case "Fileira5":
+				idDestino = 11;
+				break;
+			case "Fileira6":
+				idDestino = 12;
+				break;
+			case "Fileira7":
+				idDestino = 13;
+				break;
+			}
+
+			partida.moverCarta(idOrigem, idDestino);
+			ControladorDeUpdateDePagina.setVar(false);
+			atualizaPagina();
+		}
+	}
+
 	public void perguntaPraOndeMover(JLabel labelDaCarta, Carta carta, String pilhaClicada) {
 		labelDaCarta.addMouseListener((MouseListener) new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -741,88 +796,49 @@ public class tabuleiro {
 				int idOrigem = 0;
 				switch (pilhaClicada) {
 				case "est":
-
 					String[] values1 = { "Descarte" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Estoque",
-							JOptionPane.DEFAULT_OPTION, null, values1, "0");
-					idOrigem = 1;
-					if (selected != null) {
-						int idDestino = 2;
-						
-						// Verifica se é uma pilha ou carta que será movida
-						if (partida.temSequenciaNaFileira(idOrigem)) {
-							// Se for uma pilha, solicita ao jogador o tamanho da pilha
-							String[] val = { "1" };
-							Object quantidadeCartasString = JOptionPane.showInputDialog(null, "Quanats cartas mover?", "Estoque",
-									JOptionPane.DEFAULT_OPTION, null, values1, "0");
-							int quantidadeCartas = Integer.parseInt((String) quantidadeCartasString);
-
-							// Verifica se o movimento é válido ou não, e faz a ação
-							partida.moverSequencia(idOrigem, idDestino, quantidadeCartas);
-						} else {
-							// Se não for uma pilha, verifica se o movimento é válido ou não, e faz a ação
-							partida.moverCarta(idOrigem, idDestino);
-							ControladorDeUpdateDePagina.setVar(false);
-							atualizaPagina();
-						}
-					}
+					moveCadaCarta(values1, "Estoque", 1);
 					break;
 				case "desc":
 					String[] values2 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Descarte",
-							JOptionPane.DEFAULT_OPTION, null, values2, "0");
-					idOrigem = 2;
+					moveCadaCarta(values2, "Descarte", 2);
 					break;
 
 				case "t1":
 					String[] values3 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 2",
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 1",
-							JOptionPane.DEFAULT_OPTION, null, values3, "0");
-					idOrigem = 7;
+					moveCadaCarta(values3, "Fileira 1", 7);
 					break;
 				case "t2":
 					String[] values4 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 2",
-							JOptionPane.DEFAULT_OPTION, null, values4, "0");
-					idOrigem = 8;
+					moveCadaCarta(values4, "Fileira 2", 8);
 					break;
 				case "t3":
 					String[] values5 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 3",
-							JOptionPane.DEFAULT_OPTION, null, values5, "0");
-					idOrigem = 9;
+					moveCadaCarta(values5, "Fileira 3", 9);
 					break;
 				case "t4":
 					String[] values6 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 5", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 4",
-							JOptionPane.DEFAULT_OPTION, null, values6, "0");
-					idOrigem = 10;
+					moveCadaCarta(values6, "Fileira 4", 10);
 					break;
 				case "t5":
 					String[] values7 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 6", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 5",
-							JOptionPane.DEFAULT_OPTION, null, values7, "0");
-					idOrigem = 11;
+					moveCadaCarta(values7, "Fileira 5", 11);
 					break;
 				case "t6":
 					String[] values8 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 7" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 6",
-							JOptionPane.DEFAULT_OPTION, null, values8, "0");
-					idOrigem = 12;
+					moveCadaCarta(values8, "Fileira 6", 12);
 					break;
 				case "t7":
 					String[] values9 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
 							"Fileira 2", "Fileira 3", "Fileira 4", "Fileira 5", "Fileira 6" };
-					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Fileira 7",
-							JOptionPane.DEFAULT_OPTION, null, values9, "0");
-					idOrigem = 13;
+					moveCadaCarta(values9, "Fileira 7", 13);
 					break;
 				}
 
@@ -832,7 +848,6 @@ public class tabuleiro {
 			}
 		});
 	}
-	
 
 	public Partida inicializaERetornaPartida() {
 		Partida partida = new Partida();
