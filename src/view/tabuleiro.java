@@ -55,8 +55,6 @@ class ControladorDeUpdateDePagina {
 
 }
 
-
-
 public class tabuleiro {
 	// PROB: QUERO DAR RELOAD NA PAG. SEM INSTANCIAR DE NOVO O BARALHO
 	// ControladorDeUpdateDePagina controle = new ControladorDeUpdateDePagina();
@@ -100,13 +98,13 @@ public class tabuleiro {
 	 */
 	private void initialize() {
 
-		if (ControladorDeUpdateDePagina.getVar()) {//se foi clicado o botão de novo jogo
+		if (ControladorDeUpdateDePagina.getVar()) {// se foi clicado o botão de novo jogo
 			partida = inicializaERetornaPartida();
 			paciencia = inicializaERetornaPaciencia();
 			pilhaRecebida = inicializaERetornaMonteDeCartas();
 			partida.iniciarPartida();
 		}
-		
+
 		paciencia = partida.retornaPacienciaAtual();
 
 		System.out.print(" Controle:" + ControladorDeUpdateDePagina.getVar());
@@ -149,6 +147,8 @@ public class tabuleiro {
 		btnSairDoJogo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				ControladorDeUpdateDePagina.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
+															// jogo
 				frame.dispose();
 				frame.setVisible(false);
 				partida.encerrarPartida();
@@ -746,6 +746,26 @@ public class tabuleiro {
 					selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", "Estoque",
 							JOptionPane.DEFAULT_OPTION, null, values1, "0");
 					idOrigem = 1;
+					if (selected != null) {
+						int idDestino = 2;
+						
+						// Verifica se é uma pilha ou carta que será movida
+						if (partida.temSequenciaNaFileira(idOrigem)) {
+							// Se for uma pilha, solicita ao jogador o tamanho da pilha
+							String[] val = { "1" };
+							Object quantidadeCartasString = JOptionPane.showInputDialog(null, "Quanats cartas mover?", "Estoque",
+									JOptionPane.DEFAULT_OPTION, null, values1, "0");
+							int quantidadeCartas = Integer.parseInt((String) quantidadeCartasString);
+
+							// Verifica se o movimento é válido ou não, e faz a ação
+							partida.moverSequencia(idOrigem, idDestino, quantidadeCartas);
+						} else {
+							// Se não for uma pilha, verifica se o movimento é válido ou não, e faz a ação
+							partida.moverCarta(idOrigem, idDestino);
+							ControladorDeUpdateDePagina.setVar(false);
+							atualizaPagina();
+						}
+					}
 					break;
 				case "desc":
 					String[] values2 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fileira 1",
@@ -812,18 +832,20 @@ public class tabuleiro {
 			}
 		});
 	}
-
 	
+
 	public Partida inicializaERetornaPartida() {
-		 Partida partida = new Partida();
-		 return partida;
+		Partida partida = new Partida();
+		return partida;
 	}
+
 	public Paciencia inicializaERetornaPaciencia() {
 		Paciencia paciencia = partida.retornaPacienciaAtual();
-		 return paciencia;
+		return paciencia;
 	}
+
 	public MonteDeCartas inicializaERetornaMonteDeCartas() {
 		MonteDeCartas pilhaRecebida = new MonteDeCartas();
-		 return pilhaRecebida;
+		return pilhaRecebida;
 	}
 }
