@@ -115,16 +115,6 @@ public class tabuleiro {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ControladorDeUpdateDePagina.setVar(false);
-				atualizaPagina();
-			}
-		});
-		btnNewButton.setBounds(117, 78, 89, 23);
-		frame.getContentPane().add(btnNewButton);
-
 		JButton btnNovoJogo = new JButton("Novo Jogo");
 		btnNovoJogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -178,25 +168,25 @@ public class tabuleiro {
 		btnQtsVirar.setBounds(131, 0, 115, 23);
 		frame.getContentPane().add(btnQtsVirar);
 
-		JLabel lblF1 = new JLabel("Funda\u00E7\u00E3o 1");
+		JLabel lblF1 = new JLabel("Funda\u00E7\u00E3o 4");
 		lblF1.setForeground(Color.WHITE);
 		lblF1.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblF1.setBounds(200, 34, 46, 14);
 		frame.getContentPane().add(lblF1);
 
-		JLabel lblF2 = new JLabel("Funda\u00E7\u00E3o 2");
+		JLabel lblF2 = new JLabel("Funda\u00E7\u00E3o 3");
 		lblF2.setForeground(Color.WHITE);
 		lblF2.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblF2.setBounds(266, 34, 46, 14);
 		frame.getContentPane().add(lblF2);
 
-		JLabel lblF3 = new JLabel("Funda\u00E7\u00E3o 3");
+		JLabel lblF3 = new JLabel("Funda\u00E7\u00E3o 2");
 		lblF3.setForeground(Color.WHITE);
 		lblF3.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblF3.setBounds(322, 34, 46, 14);
 		frame.getContentPane().add(lblF3);
 
-		JLabel lblF4 = new JLabel("Funda\u00E7\u00E3o 4");
+		JLabel lblF4 = new JLabel("Funda\u00E7\u00E3o 1");
 		lblF4.setForeground(Color.WHITE);
 		lblF4.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblF4.setBounds(378, 34, 46, 14);
@@ -214,43 +204,43 @@ public class tabuleiro {
 		lblDescarte.setBounds(72, 33, 30, 14);
 		frame.getContentPane().add(lblDescarte);
 
-		JLabel lblTableau_1 = new JLabel("Tableau 1");
+		JLabel lblTableau_1 = new JLabel("Fileira 1");
 		lblTableau_1.setForeground(Color.WHITE);
 		lblTableau_1.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_1.setBounds(10, 236, 38, 14);
 		frame.getContentPane().add(lblTableau_1);
 
-		JLabel lblTableau_2 = new JLabel("Tableau 2");
+		JLabel lblTableau_2 = new JLabel("Fileira 2");
 		lblTableau_2.setForeground(Color.WHITE);
 		lblTableau_2.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_2.setBounds(72, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_2);
 
-		JLabel lblTableau_3 = new JLabel("Tableau 3");
+		JLabel lblTableau_3 = new JLabel("Fileira 3");
 		lblTableau_3.setForeground(Color.WHITE);
 		lblTableau_3.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_3.setBounds(131, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_3);
 
-		JLabel lblTableau_4 = new JLabel("Tableau 4");
+		JLabel lblTableau_4 = new JLabel("Fileira 4");
 		lblTableau_4.setForeground(Color.WHITE);
 		lblTableau_4.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_4.setBounds(187, 236, 38, 14);
 		frame.getContentPane().add(lblTableau_4);
 
-		JLabel lblTableau_5 = new JLabel("Tableau 5");
+		JLabel lblTableau_5 = new JLabel("Fileira 5");
 		lblTableau_5.setForeground(Color.WHITE);
 		lblTableau_5.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_5.setBounds(246, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_5);
 
-		JLabel lblTableau_6 = new JLabel("Tableau 6");
+		JLabel lblTableau_6 = new JLabel("Fileira 6");
 		lblTableau_6.setForeground(Color.WHITE);
 		lblTableau_6.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_6.setBounds(308, 235, 38, 14);
 		frame.getContentPane().add(lblTableau_6);
 
-		JLabel lblTableau_7 = new JLabel("Tableau 7");
+		JLabel lblTableau_7 = new JLabel("Fileira 7");
 		lblTableau_7.setForeground(Color.WHITE);
 		lblTableau_7.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		lblTableau_7.setBounds(364, 235, 38, 14);
@@ -332,28 +322,28 @@ public class tabuleiro {
 		JLabel f1Number = new JLabel("(" + f1 + ")");
 		f1Number.setForeground(Color.WHITE);
 		f1Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		f1Number.setBounds(246, 34, 17, 14);
+		f1Number.setBounds(417, 34, 17, 14);
 		frame.getContentPane().add(f1Number);
 
 		int f2 = paciencia.getMonteFundacao(1).size();
 		JLabel f2Number = new JLabel("(" + f2 + ")");
 		f2Number.setForeground(Color.WHITE);
 		f2Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		f2Number.setBounds(305, 33, 17, 14);
+		f2Number.setBounds(361, 34, 17, 14);
 		frame.getContentPane().add(f2Number);
 
 		int f3 = paciencia.getMonteFundacao(2).size();
 		JLabel f3Number = new JLabel("(" + f3 + ")");
 		f3Number.setForeground(Color.WHITE);
 		f3Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		f3Number.setBounds(361, 33, 17, 14);
+		f3Number.setBounds(306, 34, 17, 14);
 		frame.getContentPane().add(f3Number);
 
 		int f4 = paciencia.getMonteFundacao(3).size();
 		JLabel f4Number = new JLabel("(" + f4 + ")");
 		f4Number.setForeground(Color.WHITE);
 		f4Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
-		f4Number.setBounds(417, 34, 17, 14);
+		f4Number.setBounds(239, 34, 17, 14);
 		frame.getContentPane().add(f4Number);
 
 	}
@@ -439,76 +429,99 @@ public class tabuleiro {
 	}
 
 	public void colocaFileirasNaTela() {
+
 		pilhaRecebida = paciencia.getMonteFileira(0);
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
-		Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
-		JLabel tab1 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		Image newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab1.setIcon(new ImageIcon(newImg));
-		tab1.setBounds(10, 171, 46, 64);
-		frame.getContentPane().add(tab1);
-		perguntaPraOndeMover(tab1, carta, "t1");
+		Image img = null;
+		Image newImg = null;
+		if (carta != null) {
+			img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
+			JLabel tab1 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab1.setIcon(new ImageIcon(newImg));
+			tab1.setBounds(10, 171, 46, 64);
+			frame.getContentPane().add(tab1);
+			perguntaPraOndeMover(tab1, carta, "t1");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(1);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
-		JLabel tab2 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab2.setIcon(new ImageIcon(newImg));
-		tab2.setBounds(72, 171, 46, 64);
-		frame.getContentPane().add(tab2);
-		perguntaPraOndeMover(tab2, carta, "t2");
+		if (carta != null) {
+
+			JLabel tab2 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab2.setIcon(new ImageIcon(newImg));
+			tab2.setBounds(72, 171, 46, 64);
+			frame.getContentPane().add(tab2);
+			perguntaPraOndeMover(tab2, carta, "t2");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(2);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		JLabel tab3 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab3.setIcon(new ImageIcon(newImg));
-		tab3.setBounds(131, 171, 46, 64);
-		frame.getContentPane().add(tab3);
-		perguntaPraOndeMover(tab3, carta, "t3");
+		if (carta != null) {
+
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab3.setIcon(new ImageIcon(newImg));
+			tab3.setBounds(131, 171, 46, 64);
+			frame.getContentPane().add(tab3);
+			perguntaPraOndeMover(tab3, carta, "t3");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(3);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
-		JLabel tab4 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab4.setIcon(new ImageIcon(newImg));
-		tab4.setBounds(187, 171, 46, 64);
-		frame.getContentPane().add(tab4);
-		perguntaPraOndeMover(tab4, carta, "t4");
+		if (carta != null) {
+
+			JLabel tab4 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab4.setIcon(new ImageIcon(newImg));
+			tab4.setBounds(187, 171, 46, 64);
+			frame.getContentPane().add(tab4);
+			perguntaPraOndeMover(tab4, carta, "t4");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(4);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
-		JLabel tab5 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab5.setIcon(new ImageIcon(newImg));
-		tab5.setBounds(246, 171, 46, 64);
-		frame.getContentPane().add(tab5);
-		perguntaPraOndeMover(tab5, carta, "t5");
+		if (carta != null) {
+
+			JLabel tab5 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab5.setIcon(new ImageIcon(newImg));
+			tab5.setBounds(246, 171, 46, 64);
+			frame.getContentPane().add(tab5);
+			perguntaPraOndeMover(tab5, carta, "t5");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(5);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
-		JLabel tab6 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab6.setIcon(new ImageIcon(newImg));
-		tab6.setBounds(308, 171, 46, 64);
-		frame.getContentPane().add(tab6);
-		perguntaPraOndeMover(tab6, carta, "t6");
+		if (carta != null) {
+
+			JLabel tab6 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab6.setIcon(new ImageIcon(newImg));
+			tab6.setBounds(308, 171, 46, 64);
+			frame.getContentPane().add(tab6);
+			perguntaPraOndeMover(tab6, carta, "t6");
+		}
 
 		pilhaRecebida = paciencia.getMonteFileira(6);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
-		JLabel tab7 = new JLabel("");
-		img = retornaFotoDaCarta(carta);
-		newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-		tab7.setIcon(new ImageIcon(newImg));
-		tab7.setBounds(364, 171, 46, 64);
-		frame.getContentPane().add(tab7);
-		perguntaPraOndeMover(tab7, carta, "t7");
+		if (carta != null) {
+
+			JLabel tab7 = new JLabel("");
+			img = retornaFotoDaCarta(carta);
+			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			tab7.setIcon(new ImageIcon(newImg));
+			tab7.setBounds(364, 171, 46, 64);
+			frame.getContentPane().add(tab7);
+			perguntaPraOndeMover(tab7, carta, "t7");
+		}
 
 	}
 
@@ -747,37 +760,37 @@ public class tabuleiro {
 			case "Descarte":
 				idDestino = 2;
 				break;
-			case "Fundação1":
+			case "Fundação 1":
 				idDestino = 3;
 				break;
-			case "Fundação2":
+			case "Fundação 2":
 				idDestino = 4;
 				break;
-			case "Fundação3":
+			case "Fundação 3":
 				idDestino = 5;
 				break;
-			case "Fundação4":
+			case "Fundação 4":
 				idDestino = 6;
 				break;
-			case "Fileira1":
+			case "Fileira 1":
 				idDestino = 7;
 				break;
-			case "Fileira2":
+			case "Fileira 2":
 				idDestino = 8;
 				break;
-			case "Fileira3":
+			case "Fileira 3":
 				idDestino = 9;
 				break;
-			case "Fileira4":
+			case "Fileira 4":
 				idDestino = 10;
 				break;
-			case "Fileira5":
+			case "Fileira 5":
 				idDestino = 11;
 				break;
-			case "Fileira6":
+			case "Fileira 6":
 				idDestino = 12;
 				break;
-			case "Fileira7":
+			case "Fileira 7":
 				idDestino = 13;
 				break;
 			}
