@@ -172,6 +172,36 @@ public class Paciencia {
 		return fileira1;
 	}
 
+	//recebe o index da carta e o num da fileira
+	public Carta getCarta(int i, int fileira) {
+		
+		switch (fileira) {
+		case 1:
+			Carta carta = fileira1.getCarta(i);
+			return carta;
+		case 2:
+			carta = fileira2.getCarta(i);
+			return carta;
+		case 3:
+			carta = fileira3.getCarta(i);
+			return carta;
+		case 4:
+			carta = fileira4.getCarta(i);
+			return carta;
+		case 5:
+			carta = fileira5.getCarta(i);
+			return carta;
+		case 6:
+			carta = fileira6.getCarta(i);
+			return carta;
+		case 7:
+			carta = fileira7.getCarta(i);
+			return carta;
+		}
+		return null;
+		
+	}
+
 	/**
 	 * Essa função permite definir a quantidade de cartas a serem viradas no
 	 * estoque.

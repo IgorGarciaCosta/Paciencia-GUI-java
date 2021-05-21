@@ -24,6 +24,11 @@ public class MonteDeCartas {
 		return true;
 	}
 	
+	
+	public void addCarta(Carta carta) {
+		this.cartas.push(carta);
+	}
+	
 	/*
 	* Esta função permite retirar uma carta do topo.
 	* @return carta do topo que foi retirada.
@@ -75,6 +80,14 @@ public class MonteDeCartas {
 		
 		if (visualizacao.length() > 2) return visualizacao.substring(1, visualizacao.length() - 1);
 		return "";
+	}
+	
+	public Carta getCarta(int i) {
+		if(!cartas.isEmpty()) {
+			Carta carta = cartas.get(i);
+			return carta;
+		}
+		return null;
 	}
 	
 

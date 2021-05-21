@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import controller.Partida;
 import model.Carta;
+import model.Lado;
 import model.MonteDeCartas;
 import model.Naipe;
 import model.Numeracao;
@@ -31,17 +32,18 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 class ControladorDeUpdateDePagina {
 	static boolean novoJogoClicado = true;
 
-	private static final ControladorDeUpdateDePagina SINGLE_INSTANCE = new ControladorDeUpdateDePagina();
+	private static final ControladorDeUpdateDePaginaBB SINGLE_INSTANCE = new ControladorDeUpdateDePaginaBB();
 
 	public ControladorDeUpdateDePagina() {
 
 	}
 
-	public static ControladorDeUpdateDePagina getInstance() {
+	public static ControladorDeUpdateDePaginaBB getInstance() {
 		return SINGLE_INSTANCE;
 	}
 
@@ -52,12 +54,9 @@ class ControladorDeUpdateDePagina {
 	public static boolean getVar() {
 		return novoJogoClicado;
 	}
-
 }
 
 public class tabuleiro {
-	// PROB: QUERO DAR RELOAD NA PAG. SEM INSTANCIAR DE NOVO O BARALHO
-	// ControladorDeUpdateDePagina controle = new ControladorDeUpdateDePagina();
 	static Partida partida = null;
 	Paciencia paciencia = null;
 	MonteDeCartas pilhaRecebida = null;
@@ -98,7 +97,7 @@ public class tabuleiro {
 	 */
 	private void initialize() {
 
-		if (ControladorDeUpdateDePagina.getVar()) {// se foi clicado o botão de novo jogo
+		if (ControladorDeUpdateDePaginaBB.getVar()) {// se foi clicado o botão de novo jogo
 			partida = inicializaERetornaPartida();
 			paciencia = inicializaERetornaPaciencia();
 			pilhaRecebida = inicializaERetornaMonteDeCartas();
@@ -106,8 +105,6 @@ public class tabuleiro {
 		}
 
 		paciencia = partida.retornaPacienciaAtual();
-
-		System.out.print(" Controle:" + ControladorDeUpdateDePagina.getVar());
 
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(34, 139, 34));
@@ -121,7 +118,7 @@ public class tabuleiro {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
-					ControladorDeUpdateDePagina.setVar(true);
+					ControladorDeUpdateDePaginaBB.setVar(true);
 					partida.encerrarPartida();
 					partida.iniciarPartida();
 					atualizaPagina();
@@ -137,7 +134,7 @@ public class tabuleiro {
 		btnSairDoJogo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				ControladorDeUpdateDePagina.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
+				ControladorDeUpdateDePaginaBB.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
 															// jogo
 				frame.dispose();
 				frame.setVisible(false);
@@ -346,6 +343,9 @@ public class tabuleiro {
 		f4Number.setBounds(239, 34, 17, 14);
 		frame.getContentPane().add(f4Number);
 
+		
+		
+
 	}
 
 	public void colocaDescarteNaTela() {
@@ -443,6 +443,7 @@ public class tabuleiro {
 			tab1.setBounds(10, 171, 46, 64);
 			frame.getContentPane().add(tab1);
 			perguntaPraOndeMover(tab1, carta, "t1");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(1);
@@ -456,6 +457,7 @@ public class tabuleiro {
 			tab2.setBounds(72, 171, 46, 64);
 			frame.getContentPane().add(tab2);
 			perguntaPraOndeMover(tab2, carta, "t2");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(2);
@@ -469,6 +471,7 @@ public class tabuleiro {
 			tab3.setBounds(131, 171, 46, 64);
 			frame.getContentPane().add(tab3);
 			perguntaPraOndeMover(tab3, carta, "t3");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(3);
@@ -482,6 +485,7 @@ public class tabuleiro {
 			tab4.setBounds(187, 171, 46, 64);
 			frame.getContentPane().add(tab4);
 			perguntaPraOndeMover(tab4, carta, "t4");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(4);
@@ -495,6 +499,7 @@ public class tabuleiro {
 			tab5.setBounds(246, 171, 46, 64);
 			frame.getContentPane().add(tab5);
 			perguntaPraOndeMover(tab5, carta, "t5");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(5);
@@ -508,12 +513,12 @@ public class tabuleiro {
 			tab6.setBounds(308, 171, 46, 64);
 			frame.getContentPane().add(tab6);
 			perguntaPraOndeMover(tab6, carta, "t6");
+
 		}
 
 		pilhaRecebida = paciencia.getMonteFileira(6);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
-
 			JLabel tab7 = new JLabel("");
 			img = retornaFotoDaCarta(carta);
 			newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -521,8 +526,71 @@ public class tabuleiro {
 			tab7.setBounds(364, 171, 46, 64);
 			frame.getContentPane().add(tab7);
 			perguntaPraOndeMover(tab7, carta, "t7");
+
+			MonteDeCartas aux = pilhaRecebida;
+			Carta cartaParaAnalisar = aux.getCarta(6);
+			showFreeCards(cartaParaAnalisar, aux, 7);
+
 		}
 
+	}
+
+	public void showFreeCards(Carta cartaParaAnalisar, MonteDeCartas aux, int idDeFileira) {
+		
+		switch (idDeFileira) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			MonteDeCartas cartasParaMostar = new MonteDeCartas();
+			int tamLimite = aux.size();
+			if (tamLimite < 5 && tamLimite > 1) {
+
+				for (int i = tamLimite-2; i >= 0; i--) {
+					cartasParaMostar.addCarta(aux.getCarta(i));
+				}
+
+			} else {// se o tamLim for >5
+				for (int i = 4; i >= 0; i--) {
+					cartasParaMostar.addCarta(aux.getCarta(i));
+				}
+			}
+
+			for (int j = 0; j < 4; j++) {
+				cartaParaAnalisar = cartasParaMostar.getCarta(j);
+				switch (j) {
+				case 0:
+					
+					break;
+				case 1:
+					
+					break;
+				case 2:
+					
+					
+					
+					break;
+				case 3:
+					
+					break;
+				case 4:
+					
+					
+					break;
+				}
+			}
+
+			break;
+		}
 	}
 
 	public Image retornaFotoDaCarta(Carta carta) {
@@ -796,7 +864,7 @@ public class tabuleiro {
 			}
 
 			partida.moverCarta(idOrigem, idDestino);
-			ControladorDeUpdateDePagina.setVar(false);
+			ControladorDeUpdateDePaginaBB.setVar(false);
 			atualizaPagina();
 		}
 	}

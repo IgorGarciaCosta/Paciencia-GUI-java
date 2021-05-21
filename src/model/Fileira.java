@@ -69,4 +69,12 @@ public class Fileira extends MonteDeCartas {
 		return null;
 	}
 	
+	public Carta getCarta(int i) {
+		if(!cartas.isEmpty()) {
+			Carta carta = cartas.get(i);
+			return carta;
+		}
+		return null;
+	}
+	
 }

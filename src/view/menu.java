@@ -10,7 +10,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -42,8 +41,6 @@ public class menu {
 		initialize();
 	}
 
-	
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -52,25 +49,38 @@ public class menu {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Paci\u00EAncia");
 		lblNewLabel.setBounds(0, 11, 434, 41);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Old English Text MT", Font.PLAIN, 40));
 		frame.getContentPane().add(lblNewLabel);
-		
-		JButton btnIniciar = new JButton("Iniciar");
-		btnIniciar.addActionListener(new ActionListener() {
+
+		JButton btnNormal = new JButton("Paci\u00EAncia Normal");
+		btnNormal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				frame.setVisible(false);
 				tabuleiro.main(null);
 			}
 		});
-		btnIniciar.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnIniciar.setBounds(150, 141, 165, 23);
-		frame.getContentPane().add(btnIniciar);
-		
+
+		btnNormal.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnNormal.setBounds(150, 141, 165, 23);
+		frame.getContentPane().add(btnNormal);
+
+		JButton btnPacinciaBigBertha = new JButton("Paci\u00EAncia Big Bertha");
+		btnPacinciaBigBertha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				frame.setVisible(false);
+				tabuleiroBigBertha.main(null);
+			}
+		});
+		btnPacinciaBigBertha.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnPacinciaBigBertha.setBounds(150, 175, 165, 23);
+		frame.getContentPane().add(btnPacinciaBigBertha);
+
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,7 +88,8 @@ public class menu {
 				System.exit(0);
 			}
 		});
-		btnFinalizar.setBounds(150, 175, 165, 23);
+		btnFinalizar.setBounds(150, 209, 165, 23);
 		frame.getContentPane().add(btnFinalizar);
+
 	}
 }
