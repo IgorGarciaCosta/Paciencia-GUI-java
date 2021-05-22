@@ -165,7 +165,7 @@ public class tabuleiroBigBertha {
 		f2Label.setBounds(78, 185, 24, 14);
 		frame.getContentPane().add(f2Label);
 
-		JLabel f3Label = new JLabel("Fil. 3");
+		JLabel f3Label = new JLabel(" Fil. 3");
 		f3Label.setForeground(Color.WHITE);
 		f3Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		f3Label.setBounds(118, 185, 24, 14);
@@ -201,13 +201,13 @@ public class tabuleiroBigBertha {
 		f8Label.setBounds(339, 185, 24, 14);
 		frame.getContentPane().add(f8Label);
 
-		JLabel f9Label = new JLabel("Fil. 9");
+		JLabel f9Label = new JLabel(" Fil. 9");
 		f9Label.setForeground(Color.WHITE);
 		f9Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		f9Label.setBounds(378, 185, 24, 14);
 		frame.getContentPane().add(f9Label);
 
-		JLabel f10Label = new JLabel("Fil. 10");
+		JLabel f10Label = new JLabel("Fil. 10 ");
 		f10Label.setForeground(Color.WHITE);
 		f10Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		f10Label.setBounds(108, 247, 24, 14);
@@ -267,13 +267,13 @@ public class tabuleiroBigBertha {
 		fund3Label.setBounds(130, 71, 30, 14);
 		frame.getContentPane().add(fund3Label);
 
-		JLabel fund4Label = new JLabel("Fund. 4");
+		JLabel fund4Label = new JLabel("Fund4");
 		fund4Label.setForeground(Color.WHITE);
 		fund4Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fund4Label.setBounds(170, 71, 30, 14);
 		frame.getContentPane().add(fund4Label);
 
-		JLabel fund5Label = new JLabel("Fund. 5");
+		JLabel fund5Label = new JLabel("Fund5");
 		fund5Label.setForeground(Color.WHITE);
 		fund5Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fund5Label.setBounds(210, 71, 30, 14);
@@ -297,7 +297,7 @@ public class tabuleiroBigBertha {
 		fund8Label.setBounds(339, 71, 30, 14);
 		frame.getContentPane().add(fund8Label);
 		
-		JLabel f15Label = new JLabel("Fil. 15");
+		JLabel f15Label = new JLabel(" Fil. 15");
 		f15Label.setForeground(Color.WHITE);
 		f15Label.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		f15Label.setBounds(334, 246, 24, 14);
@@ -479,7 +479,6 @@ public class tabuleiroBigBertha {
 		fil15.setIcon(new ImageIcon(newImg));
 		fil15.setBounds(334, 196, 30, 50);
 		frame.getContentPane().add(fil15);
-
 		
 		
 
@@ -569,6 +568,157 @@ public class tabuleiroBigBertha {
 	}
 
 	public void insereQuantDeCartas() {
+
+		JLabel estQnt = new JLabel("(0)");
+		estQnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		estQnt.setForeground(Color.WHITE);
+		estQnt.setBounds(38, 100, 24, 14);
+		frame.getContentPane().add(estQnt);
+		
+		JLabel fu1Qnt = new JLabel("(0)");
+		fu1Qnt.setForeground(Color.WHITE);
+		fu1Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu1Qnt.setBounds(78, 70, 24, 14);
+		frame.getContentPane().add(fu1Qnt);
+		
+		JLabel fu2Qnt = new JLabel("(0)");
+		fu2Qnt.setForeground(Color.WHITE);
+		fu2Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu2Qnt.setBounds(118, 70, 24, 14);
+		frame.getContentPane().add(fu2Qnt);
+		
+		JLabel fu3Qnt = new JLabel("(0)");
+		fu3Qnt.setForeground(Color.WHITE);
+		fu3Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu3Qnt.setBounds(158, 70, 24, 14);
+		frame.getContentPane().add(fu3Qnt);
+		
+		JLabel fu4Qnt = new JLabel("(0)");
+		fu4Qnt.setForeground(Color.WHITE);
+		fu4Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu4Qnt.setBounds(192, 70, 24, 14);
+		frame.getContentPane().add(fu4Qnt);
+		
+		JLabel fu5Qnt = new JLabel("(0)");
+		fu5Qnt.setForeground(Color.WHITE);
+		fu5Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu5Qnt.setBounds(233, 70, 24, 14);
+		frame.getContentPane().add(fu5Qnt);
+		
+		JLabel fu6Qnt = new JLabel("(0)");
+		fu6Qnt.setForeground(Color.WHITE);
+		fu6Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu6Qnt.setBounds(279, 70, 24, 14);
+		frame.getContentPane().add(fu6Qnt);
+		
+		JLabel fu7Qnt = new JLabel("(0)");
+		fu7Qnt.setForeground(Color.WHITE);
+		fu7Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu7Qnt.setBounds(323, 70, 24, 14);
+		frame.getContentPane().add(fu7Qnt);
+		
+		JLabel fu8Qnt = new JLabel("(0)");
+		fu8Qnt.setForeground(Color.WHITE);
+		fu8Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fu8Qnt.setBounds(367, 70, 17, 14);
+		frame.getContentPane().add(fu8Qnt);
+		
+		JLabel reisQnt = new JLabel("(0)");
+		reisQnt.setForeground(Color.WHITE);
+		reisQnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		reisQnt.setBounds(417, 100, 17, 14);
+		frame.getContentPane().add(reisQnt);
+		
+		JLabel fil1Qnt = new JLabel("(0)");
+		fil1Qnt.setForeground(Color.WHITE);
+		fil1Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil1Qnt.setBounds(63, 185, 17, 14);
+		frame.getContentPane().add(fil1Qnt);
+		
+		JLabel fil2Qnt = new JLabel("(0)");
+		fil2Qnt.setForeground(Color.WHITE);
+		fil2Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil2Qnt.setBounds(108, 185, 17, 14);
+		frame.getContentPane().add(fil2Qnt);
+		
+		JLabel fil3Qnt = new JLabel("(0)");
+		fil3Qnt.setForeground(Color.WHITE);
+		fil3Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil3Qnt.setBounds(143, 185, 17, 14);
+		frame.getContentPane().add(fil3Qnt);
+		
+		JLabel fil4Qnt = new JLabel("(0)");
+		fil4Qnt.setForeground(Color.WHITE);
+		fil4Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil4Qnt.setBounds(183, 185, 17, 14);
+		frame.getContentPane().add(fil4Qnt);
+		
+		JLabel fil5Qnt = new JLabel("(0)");
+		fil5Qnt.setForeground(Color.WHITE);
+		fil5Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil5Qnt.setBounds(233, 185, 17, 14);
+		frame.getContentPane().add(fil5Qnt);
+		
+		JLabel fil6Qnt = new JLabel("(0)");
+		fil6Qnt.setForeground(Color.WHITE);
+		fil6Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil6Qnt.setBounds(267, 185, 17, 14);
+		frame.getContentPane().add(fil6Qnt);
+		
+		JLabel fil7Qnt = new JLabel("(0)");
+		fil7Qnt.setForeground(Color.WHITE);
+		fil7Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil7Qnt.setBounds(322, 185, 17, 14);
+		frame.getContentPane().add(fil7Qnt);
+		
+		JLabel fil8Qnt = new JLabel("(0)");
+		fil8Qnt.setForeground(Color.WHITE);
+		fil8Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil8Qnt.setBounds(367, 185, 17, 14);
+		frame.getContentPane().add(fil8Qnt);
+		
+		JLabel fil9Qnt = new JLabel("(0)");
+		fil9Qnt.setForeground(Color.WHITE);
+		fil9Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil9Qnt.setBounds(401, 185, 17, 14);
+		frame.getContentPane().add(fil9Qnt);
+		
+		JLabel fil10Qnt = new JLabel("(0)");
+		fil10Qnt.setForeground(Color.WHITE);
+		fil10Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil10Qnt.setBounds(130, 246, 17, 14);
+		frame.getContentPane().add(fil10Qnt);
+		
+		JLabel fil11Qnt = new JLabel("(0)");
+		fil11Qnt.setForeground(Color.WHITE);
+		fil11Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil11Qnt.setBounds(183, 246, 17, 14);
+		frame.getContentPane().add(fil11Qnt);
+		
+		JLabel fil12Qnt = new JLabel("(0)");
+		fil12Qnt.setForeground(Color.WHITE);
+		fil12Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil12Qnt.setBounds(228, 246, 17, 14);
+		frame.getContentPane().add(fil12Qnt);
+		
+		JLabel fil13Qnt = new JLabel("(0)");
+		fil13Qnt.setForeground(Color.WHITE);
+		fil13Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil13Qnt.setBounds(279, 246, 17, 14);
+		frame.getContentPane().add(fil13Qnt);
+		
+		JLabel fil14Qnt = new JLabel("(0)");
+		fil14Qnt.setForeground(Color.WHITE);
+		fil14Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil14Qnt.setBounds(323, 246, 17, 14);
+		frame.getContentPane().add(fil14Qnt);
+		
+		JLabel fil15Qnt = new JLabel("(0)");
+		fil15Qnt.setForeground(Color.WHITE);
+		fil15Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		fil15Qnt.setBounds(367, 247, 17, 14);
+		frame.getContentPane().add(fil15Qnt);
+
 		
 	}
 	
