@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 
 import controller.Partida;
 import model.Carta;
-import model.Lado;
 import model.MonteDeCartas;
 import model.Naipe;
 import model.Numeracao;
@@ -17,22 +16,15 @@ import controller.Paciencia;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Panel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 class ControladorDeUpdateDePagina {
 	static boolean novoJogoClicado = true;

@@ -15,9 +15,9 @@ import model.Descarte;
 /**
  * Essa classe representa o controlador do jogo Paciência.
  */
-public class Paciencia {
-	private static final int QUANTIDADE_FUNDACOES = 4;
-	private static final int QUANTIDADE_FILEIRAS = 7;
+public class PacienciaBigBertha {
+	private static final int QUANTIDADE_FUNDACOES = 8;
+	private static final int QUANTIDADE_FILEIRAS = 15;
 	private int qtdCartasVirarEstoque = 1;
 	private MonteDeCartas estoque = new Estoque();
 	private MonteDeCartas descarte = new Descarte();
@@ -25,7 +25,10 @@ public class Paciencia {
 	public MonteDeCartas fundacao2 = new Fundacao();
 	public MonteDeCartas fundacao3 = new Fundacao();
 	public MonteDeCartas fundacao4 = new Fundacao();
-	
+	public MonteDeCartas fundacao5 = new Fundacao();
+	public MonteDeCartas fundacao6 = new Fundacao();
+	public MonteDeCartas fundacao7 = new Fundacao();
+	public MonteDeCartas fundacao8 = new Fundacao();
 	public MonteDeCartas fileira1 = new Fileira();
 	public MonteDeCartas fileira2 = new Fileira();
 	public MonteDeCartas fileira3 = new Fileira();
@@ -33,7 +36,14 @@ public class Paciencia {
 	public MonteDeCartas fileira5 = new Fileira();
 	public MonteDeCartas fileira6 = new Fileira();
 	public MonteDeCartas fileira7 = new Fileira();
-	
+	public MonteDeCartas fileira8 = new Fileira();
+	public MonteDeCartas fileira9 = new Fileira();
+	public MonteDeCartas fileira10 = new Fileira();
+	public MonteDeCartas fileira11 = new Fileira();
+	public MonteDeCartas fileira12 = new Fileira();
+	public MonteDeCartas fileira13 = new Fileira();
+	public MonteDeCartas fileira14 = new Fileira();
+	public MonteDeCartas fileira15 = new Fileira();
 
 	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(
 			2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
@@ -43,7 +53,7 @@ public class Paciencia {
 	/**
 	 * Este construtor permite estabelecer o estado inicial do jogo.
 	 */
-	public Paciencia() {
+	public PacienciaBigBertha() {
 
 		/* Adiciona estoque e descarte a lista de montes */
 		montes.add(estoque);
@@ -53,7 +63,7 @@ public class Paciencia {
 		for (int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Fundacao fundacao = new Fundacao();
 			montes.add(fundacao);
-			setMonteFundacao(fundacao, i);
+			setMonteFundacaoBigBertha(fundacao, i);
 		}
 
 		/* Adiciona as fileiras a lista de montes */
@@ -67,10 +77,10 @@ public class Paciencia {
 			}
 			fileira.virarCartaDoTopo();
 			montes.add(fileira);
-			setMonteFileira(fileira, i);
+			setMonteFileiraBigBertha(fileira, i);
 		}
 
-		setMontesDoJogo(montes);
+		setMontesDoJogoBigBertha(montes);
 	}
 
 	/**
@@ -78,11 +88,11 @@ public class Paciencia {
 	 * 
 	 * @param Os montes de cartas do jogo
 	 */
-	public void setMontesDoJogo(ArrayList<MonteDeCartas> montes) {
+	public void setMontesDoJogoBigBertha(ArrayList<MonteDeCartas> montes) {
 		montesPraInterface = montes;
 	}
 
-	public void setMonteFundacao(Fundacao fundacao, int i) {
+	public void setMonteFundacaoBigBertha(Fundacao fundacao, int i) {
 		switch (i) {
 		case 0:
 			fundacao1 = fundacao;
@@ -99,7 +109,7 @@ public class Paciencia {
 		}
 	}
 
-	public void setMonteFileira(Fileira fileira, int i) {
+	public void setMonteFileiraBigBertha(Fileira fileira, int i) {
 		switch (i) {
 		case 0:
 			fileira1 = fileira;
@@ -128,19 +138,21 @@ public class Paciencia {
 	/**
 	 * Função para pegar os montes do jogo na interface
 	 */
-	public ArrayList<MonteDeCartas> getMontesDoJogo() {
+	public ArrayList<MonteDeCartas> getMontesDoJogoBigBertha() {
 		return montesPraInterface;
 	}
 
-	public MonteDeCartas getMonteEstoque() {
+	public MonteDeCartas getMonteEstoqueBigBertha() {
 		return estoque;
 	}
 
-	public MonteDeCartas getMonteDescarte() {
+	public MonteDeCartas getMonteDescarteBigBertha() {
 		return descarte;
 	}
 
-	public MonteDeCartas getMonteFundacao(int i) {
+	
+	
+	public MonteDeCartas getMonteFundacaoBigBertha(int i) {
 		switch (i) {
 		case 0:
 			return fundacao1;
@@ -150,12 +162,21 @@ public class Paciencia {
 			return fundacao3;
 		case 3:
 			return fundacao4;
+		case 4:
+			return fundacao5;
+		case 5:
+			return fundacao6;
+		case 6:
+			return fundacao7;
+		case 7:
+			return fundacao8;
 		}
 		return fundacao1;
 	}
+
 	
-	
-	public MonteDeCartas getMonteFileira(int i) {
+
+	public MonteDeCartas getMonteFileiraBigBertha(int i) {
 		switch (i) {
 		case 0:
 			return fileira1;
@@ -171,11 +192,28 @@ public class Paciencia {
 			return fileira6;
 		case 6:
 			return fileira7;
+		case 7:
+			return fileira8;
+		case 8:
+			return fileira9;
+		case 9:
+			return fileira10;
+		case 10:
+			return fileira11;
+		case 11:
+			return fileira12;
+		case 12:
+			return fileira13;
+		case 13:
+			return fileira14;
+		case 14:
+			return fileira15;
+
 		}
 		return fileira1;
 	}
 
-		// recebe o index da carta e o num da fileira
+	// recebe o index da carta e o num da fileira
 	public Carta getCarta(int i, int fileira) {
 
 		switch (fileira) {
