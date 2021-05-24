@@ -29,13 +29,13 @@ import javax.swing.JLabel;
 class ControladorDeUpdateDePagina {
 	static boolean novoJogoClicado = true;
 
-	private static final ControladorDeUpdateDePaginaBB SINGLE_INSTANCE = new ControladorDeUpdateDePaginaBB();
+	private static final ControladorDeUpdateDePagina SINGLE_INSTANCE = new ControladorDeUpdateDePagina();
 
 	public ControladorDeUpdateDePagina() {
 
 	}
 
-	public static ControladorDeUpdateDePaginaBB getInstance() {
+	public static ControladorDeUpdateDePagina getInstance() {
 		return SINGLE_INSTANCE;
 	}
 
@@ -89,7 +89,7 @@ public class tabuleiro {
 	 */
 	private void initialize() {
 
-		if (ControladorDeUpdateDePaginaBB.getVar()) {// se foi clicado o botão de novo jogo
+		if (ControladorDeUpdateDePagina.getVar()) {// se foi clicado o botão de novo jogo
 			partida = inicializaERetornaPartida();
 			paciencia = inicializaERetornaPaciencia();
 			pilhaRecebida = inicializaERetornaMonteDeCartas();
@@ -110,7 +110,7 @@ public class tabuleiro {
 				Object resposta = JOptionPane.showConfirmDialog(btnNovoJogo, "Tem certeza que quer reiniciar?");
 				System.out.print(resposta);
 				if ((int) resposta == 0) {
-					ControladorDeUpdateDePaginaBB.setVar(true);
+					ControladorDeUpdateDePagina.setVar(true);
 					partida.encerrarPartida();
 					partida.iniciarPartida();
 					atualizaPagina();
@@ -126,7 +126,7 @@ public class tabuleiro {
 		btnSairDoJogo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				ControladorDeUpdateDePaginaBB.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
+				ControladorDeUpdateDePagina.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
 															// jogo
 				frame.dispose();
 				frame.setVisible(false);
@@ -334,10 +334,6 @@ public class tabuleiro {
 		f4Number.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		f4Number.setBounds(239, 34, 17, 14);
 		frame.getContentPane().add(f4Number);
-
-		
-		
-
 	}
 
 	public void colocaDescarteNaTela() {
@@ -856,7 +852,7 @@ public class tabuleiro {
 			}
 
 			partida.moverCarta(idOrigem, idDestino);
-			ControladorDeUpdateDePaginaBB.setVar(false);
+			ControladorDeUpdateDePagina.setVar(false);
 			atualizaPagina();
 		}
 	}

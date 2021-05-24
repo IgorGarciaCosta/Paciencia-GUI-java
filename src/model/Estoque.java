@@ -1,56 +1,73 @@
 package model;
 
 import java.util.Collections;
-import model.Descarte;
+import java.util.Stack;
 
 public class Estoque extends MonteDeCartas {
-	
 
-	public Estoque () {
+	public Estoque() {
+
 		super();
-		/* Preenche o estoque com todas as 52 cartas dispon√≠veis no jogo. */
+		final Stack<Carta> cartas2 = new Stack<Carta>();// baralho auxiliar
+
+		/* Preenche o estoque com todas as 104 cartas dispon√≠veis no jogo. */
 		for (Naipe naipe : Naipe.values()) {
 			for (Numeracao valor : Numeracao.values()) {
 				Carta carta = new Carta(naipe, valor);
 				this.cartas.push(carta);
+				cartas2.push(carta);
 			}
 		}
+		//adiciona as cartas do baralho auxiliar ao principal
+		for (int i = 0; i < cartas2.size(); i++) {
+			cartas.push(cartas2.get(i));
+		}
+		
 		Collections.shuffle(cartas); // embaralha as cartas!!
+
 	}
-	
+
 	/*
-	* Esta funÁ„o sobrescrita implementa como Estoque recebe uma carta.
-	* @param carta a ser recebida.
-	* @param monte de origem.
-	* @return se a carta foi recebida ou n√£o.
-	*/
+	 * Esta funÁ„o sobrescrita implementa como Estoque recebe uma carta.
+	 * 
+	 * @param carta a ser recebida.
+	 * 
+	 * @param monte de origem.
+	 * 
+	 * @return se a carta foi recebida ou n√£o.
+	 */
 	@Override
 	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
 		return false; // estoque n√£o recebe carta!!!
 	}
-	
+
 	/*
-	* Esta funÁ„o sobrescrita implementa como Estoque vira a carta do topo.
-	* @return carta do topo.
-	*/
+	 * Esta funÁ„o sobrescrita implementa como Estoque vira a carta do topo.
+	 * 
+	 * @return carta do topo.
+	 */
 	@Override
 	public Carta virarCartaDoTopo() {
 		Carta topo = visualizarCartaDoTopo();
-		
-		if(!estaVazio()) {
+
+		if (!estaVazio()) {
 			topo.esconder();
 		}
-		
+
 		return topo;
 	}
-	
+
 	/*
-	* Esta fun√ß√£o permite o estoque se reestabelecer quando √© esgotado, atrav√©s do Descarte.
-	* @param carta a ser inserida.
-	* @param monte de origem.
-	* @return se a carta foi reestabelecida ou n√£o.
-	*/
-	public boolean restabelecer (Carta carta, MonteDeCartas origem) {
+	 * Esta fun√ß√£o permite o estoque se reestabelecer quando √© esgotado, atrav√©s
+	 * do Descarte.
+	 * 
+	 * @param carta a ser inserida.
+	 * 
+	 * @param monte de origem.
+	 * 
+	 * @return se a carta foi reestabelecida ou n√£o.
+	 */
+	public boolean restabelecer(Carta carta, MonteDeCartas origem) {
 		if (origem instanceof Descarte) {
 			carta.esconder();
 			this.cartas.push(carta);

@@ -11,6 +11,7 @@ public class MonteDeCartas {
 	
 	public MonteDeCartas() {
 		this.cartas = new Stack<Carta>();
+		
 	}
 	
 	/**

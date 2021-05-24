@@ -5,7 +5,6 @@ import java.util.Stack;
 
 import model.Carta;
 import model.MonteDeCartas;
-import model.Numeracao;
 import model.Fundacao;
 import model.Lado;
 import model.Fileira;
@@ -71,7 +70,7 @@ public class PacienciaBigBertha {
 			Fileira fileira = new Fileira();
 
 			/* Preenche as fileiras de cartas e vira a carta do topo */
-			for (int j = 0; j <= i; j++) {
+			for (int j = 0; j < 6; j++) {
 				Carta carta = estoque.retirarCartaDoTopo();
 				fileira.preencher(carta);
 			}
@@ -106,7 +105,21 @@ public class PacienciaBigBertha {
 		case 3:
 			fundacao4 = fundacao;
 			break;
+		case 4:
+			fundacao5 = fundacao;
+			break;
+		case 5:
+			fundacao6 = fundacao;
+			break;
+		case 6:
+			fundacao7 = fundacao;
+			break;
+		case 7:
+			fundacao8 = fundacao;
+			break;
+
 		}
+
 	}
 
 	public void setMonteFileiraBigBertha(Fileira fileira, int i) {
@@ -132,6 +145,30 @@ public class PacienciaBigBertha {
 		case 6:
 			fileira7 = fileira;
 			break;
+		case 7:
+			fileira8 = fileira;
+			break;
+		case 8:
+			fileira9 = fileira;
+			break;
+		case 9:
+			fileira10 = fileira;
+			break;
+		case 10:
+			fileira11 = fileira;
+			break;
+		case 11:
+			fileira12 = fileira;
+			break;
+		case 12:
+			fileira13 = fileira;
+			break;
+		case 13:
+			fileira14 = fileira;
+			break;
+		case 14:
+			fileira15 = fileira;
+			break;
 		}
 	}
 
@@ -150,8 +187,6 @@ public class PacienciaBigBertha {
 		return descarte;
 	}
 
-	
-	
 	public MonteDeCartas getMonteFundacaoBigBertha(int i) {
 		switch (i) {
 		case 0:
@@ -173,8 +208,6 @@ public class PacienciaBigBertha {
 		}
 		return fundacao1;
 	}
-
-	
 
 	public MonteDeCartas getMonteFileiraBigBertha(int i) {
 		switch (i) {
@@ -238,7 +271,33 @@ public class PacienciaBigBertha {
 		case 7:
 			carta = fileira7.getCarta(i);
 			return carta;
+		case 8:
+			carta = fileira8.getCarta(i);
+			return carta;
+		case 9:
+			carta = fileira9.getCarta(i);
+			return carta;
+		case 10:
+			carta = fileira10.getCarta(i);
+			return carta;
+		case 11:
+			carta = fileira11.getCarta(i);
+			return carta;
+		case 12:
+			carta = fileira12.getCarta(i);
+			return carta;
+		case 13:
+			carta = fileira13.getCarta(i);
+			return carta;
+		case 14:
+			carta = fileira14.getCarta(i);
+			return carta;
+		case 15:
+			carta = fileira15.getCarta(i);
+			return carta;
+
 		}
+
 		return null;
 
 	}
@@ -322,7 +381,7 @@ public class PacienciaBigBertha {
 				Fundacao f = (Fundacao) monte;
 				if (f.estaCompleta()) {
 					qtdFundacoesCompletas++;
-					if (qtdFundacoesCompletas == 4) {
+					if (qtdFundacoesCompletas == 8) {
 						return true;
 					}
 				}
