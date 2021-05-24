@@ -57,7 +57,6 @@ public class PacienciaBigBertha {
 
 		/* Adiciona EstoqueBB e DescarteBB a lista de montes */
 		montes.add(EstoqueBB);
-		montes.add(EstoqueBBReis);
 		montes.add(DescarteBB);
 
 		/* Adiciona as fundações a lista de montes */
@@ -80,6 +79,7 @@ public class PacienciaBigBertha {
 			montes.add(FileiraBB);
 			setMonteFileiraBBBigBertha(FileiraBB, i);
 		}
+		montes.add(EstoqueBBReis);
 
 		setMontesDoJogoBigBertha(montes);
 	}
@@ -184,7 +184,7 @@ public class PacienciaBigBertha {
 	public MonteDeCartasBB getMonteEstoqueBBBigBertha() {
 		return EstoqueBB;
 	}
-	
+
 	public MonteDeCartasBB getMonteEstoqueBBReisBigBertha() {
 		return EstoqueBBReis;
 	}
@@ -331,6 +331,7 @@ public class PacienciaBigBertha {
 
 		MonteDeCartasBB origem = montes.get(idOrigem - 1);
 		MonteDeCartasBB destino = montes.get(idDestino - 1);
+
 		Carta c = origem.visualizarCartaDoTopo();
 		if (c == null) {
 			if (origem instanceof EstoqueBB) { // o EstoqueBB está vazio, é necessário reestabelece-lo
@@ -343,7 +344,8 @@ public class PacienciaBigBertha {
 			return false; // a origem não possui carta, logo não é possíel realizar o movimento.
 		}
 
-		if (origem instanceof EstoqueBB) { // a origem é o EstoqueBB, logo há possibilidade de fornecer mais de uma carta
+		if (origem instanceof EstoqueBB) { // a origem é o EstoqueBB, logo há possibilidade de fornecer mais de uma
+											// carta
 			for (int n = 0; n < qtdCartasVirarEstoqueBB; n++) {
 				c = origem.visualizarCartaDoTopo();
 
@@ -357,6 +359,8 @@ public class PacienciaBigBertha {
 			}
 			return true;
 		} else { // se a origem não é o EstoqueBB
+			System.out.print(destino.receberCarta(c, origem)+" "+c+" /  "+destino);
+			System.out.print("  Tab de origem: "+ origem);
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
@@ -436,7 +440,8 @@ public class PacienciaBigBertha {
 	}
 
 	/**
-	 * Esta função permite o jogador mover uma sequência de uma FileiraBB para outra.
+	 * Esta função permite o jogador mover uma sequência de uma FileiraBB para
+	 * outra.
 	 * 
 	 * @param identificador do monte de origem.
 	 * @param identificador do monte de destino.

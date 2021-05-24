@@ -25,7 +25,7 @@ public class Paciencia {
 	public MonteDeCartas fundacao2 = new Fundacao();
 	public MonteDeCartas fundacao3 = new Fundacao();
 	public MonteDeCartas fundacao4 = new Fundacao();
-	
+
 	public MonteDeCartas fileira1 = new Fileira();
 	public MonteDeCartas fileira2 = new Fileira();
 	public MonteDeCartas fileira3 = new Fileira();
@@ -33,7 +33,6 @@ public class Paciencia {
 	public MonteDeCartas fileira5 = new Fileira();
 	public MonteDeCartas fileira6 = new Fileira();
 	public MonteDeCartas fileira7 = new Fileira();
-	
 
 	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(
 			2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
@@ -153,8 +152,7 @@ public class Paciencia {
 		}
 		return fundacao1;
 	}
-	
-	
+
 	public MonteDeCartas getMonteFileira(int i) {
 		switch (i) {
 		case 0:
@@ -175,7 +173,7 @@ public class Paciencia {
 		return fileira1;
 	}
 
-		// recebe o index da carta e o num da fileira
+	// recebe o index da carta e o num da fileira
 	public Carta getCarta(int i, int fileira) {
 
 		switch (fileira) {
@@ -228,6 +226,7 @@ public class Paciencia {
 
 		MonteDeCartas origem = montes.get(idOrigem - 1);
 		MonteDeCartas destino = montes.get(idDestino - 1);
+		
 
 		Carta c = origem.visualizarCartaDoTopo();
 		if (c == null) {

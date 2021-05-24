@@ -358,7 +358,7 @@ public class tabuleiroBigBertha {
 	}
 
 	public void colocaEstoqueReisNaTela() {
-		pilhaRecebida = paciencia.getMonteEstoqueBBBigBertha();
+		pilhaRecebida = paciencia.getMonteEstoqueBBReisBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
@@ -514,7 +514,7 @@ public class tabuleiroBigBertha {
 		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(12);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
-			JLabel fil13 = new JLabel("");
+			JLabel fil13 = new JLabel("aa");
 			img = retornaFotoDaCarta(carta);
 			newImg = img.getScaledInstance(30, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 			fil13.setIcon(new ImageIcon(newImg));
@@ -958,56 +958,56 @@ public class tabuleiroBigBertha {
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 2", "Fileira 3", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values3, "Fileira 1", 7);
+					moveCadaCarta(values3, "Fileira 1", 11);
 					break;
 				case "t2":
 					String[] values4 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 3", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values4, "Fileira 2", 8);
+					moveCadaCarta(values4, "Fileira 2", 12);
 					break;
 				case "t3":
 					String[] values5 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values5, "Fileira 3", 9);
+					moveCadaCarta(values5, "Fileira 3", 13);
 					break;
 				case "t4":
 					String[] values6 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values6, "Fileira 4", 10);
+					moveCadaCarta(values6, "Fileira 4", 14);
 					break;
 				case "t5":
 					String[] values7 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values7, "Fileira 5", 11);
+					moveCadaCarta(values7, "Fileira 5", 15);
 					break;
 				case "t6":
 					String[] values8 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values8, "Fileira 6", 12);
+					moveCadaCarta(values8, "Fileira 6", 16);
 					break;
 				case "t7":
 					String[] values9 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values9, "Fileira 7", 13);
+					moveCadaCarta(values9, "Fileira 7", 17);
 					break;
 				case "t8":
 					String[] values10 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 9", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values10, "Fileira 8", 14);
+					moveCadaCarta(values10, "Fileira 8", 18);
 					break;
 
 				case "t9":
@@ -1015,7 +1015,7 @@ public class tabuleiroBigBertha {
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 10", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values11, "Fileira 9", 15);
+					moveCadaCarta(values11, "Fileira 9", 19);
 					break;
 				case "t10":
 					String[] values12 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
@@ -1029,35 +1029,35 @@ public class tabuleiroBigBertha {
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values13, "Fileira 11", 17);
+					moveCadaCarta(values13, "Fileira 11", 20);
 					break;
 				case "t12":
 					String[] values14 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values14, "Fileira 12", 18);
+					moveCadaCarta(values14, "Fileira 12", 21);
 					break;
 				case "t13":
 					String[] values15 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values15, "Fileira 13", 19);
+					moveCadaCarta(values15, "Fileira 13", 22);
 					break;
 				case "t14":
 					String[] values16 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values16, "Fileira 14", 20);
+					moveCadaCarta(values16, "Fileira 14", 23);
 					break;
 				case "t15":
 					String[] values17 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14", "Estoque Reis" };
-					moveCadaCarta(values17, "Fileira 15", 21);
+					moveCadaCarta(values17, "Fileira 15", 24);
 					break;
 				}
 
