@@ -1,11 +1,12 @@
 package model;
+import model.EstoqueBB;
 
 /**
 * Esta classe representa um Monte de Cartas do tipo Descarte.
 */
-public class Descarte extends MonteDeCartas{
+public class DescarteBB extends MonteDeCartasBB{
 	
-	public Descarte () {
+	public DescarteBB () {
 		super();
 	}
 	
@@ -16,8 +17,8 @@ public class Descarte extends MonteDeCartas{
 	* @return se a carta foi recebida ou não.
 	*/
 	@Override
-	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
-		if (origem instanceof Estoque) {
+	public boolean receberCarta(Carta carta, MonteDeCartasBB origem) {
+		if (origem instanceof EstoqueBB) {
 			carta.mostrar();
 			this.cartas.push(carta);
 			return true;

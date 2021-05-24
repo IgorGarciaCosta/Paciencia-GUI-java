@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import controller.PacienciaBigBertha;
 import controller.PartidaBigBertha;
 import model.Carta;
-import model.MonteDeCartas;
+import model.MonteDeCartasBB;
 import model.Naipe;
 import model.Numeracao;
 
@@ -51,7 +51,7 @@ class ControladorDeUpdateDePaginaBB {
 public class tabuleiroBigBertha {
 	static PartidaBigBertha partida = null;
 	PacienciaBigBertha paciencia = null;
-	MonteDeCartas pilhaRecebida = null;
+	MonteDeCartasBB pilhaRecebida = null;
 
 	private JFrame frame;
 
@@ -92,10 +92,10 @@ public class tabuleiroBigBertha {
 		if (ControladorDeUpdateDePaginaBB.getVar()) {// se foi clicado o botão de novo jogo
 			partida = inicializaERetornaPartida();
 			paciencia = inicializaERetornaPaciencia();
-			pilhaRecebida = inicializaERetornaMonteDeCartas();
+			pilhaRecebida = inicializaERetornaMonteDeCartasBB();
 			partida.iniciarPartida();
 		}
-		
+
 		paciencia = partida.retornaPacienciaAtual();
 
 		frame = new JFrame();
@@ -317,7 +317,6 @@ public class tabuleiroBigBertha {
 		frame.getContentPane().add(descLabel);
 		// FIM DOS NOMES DE PILHAS
 
-		
 		colocaEstoqueNaTela();
 		colocaDescarteNatela();
 		colocaEstoqueReisNaTela();
@@ -328,11 +327,12 @@ public class tabuleiroBigBertha {
 	}
 
 	public void colocaDescarteNatela() {
-		pilhaRecebida = paciencia.getMonteDescarteBigBertha();
+		pilhaRecebida = paciencia.getMonteDescarteBBBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
-			Image newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			img = retornaFotoDaCarta(carta);
+			Image newImg = img.getScaledInstance(30, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 			JLabel desc = new JLabel("");
 			desc.setIcon(new ImageIcon(newImg));
 			desc.setBounds(10, 85, 30, 50);
@@ -343,11 +343,11 @@ public class tabuleiroBigBertha {
 	}
 
 	public void colocaEstoqueNaTela() {
-		pilhaRecebida = paciencia.getMonteEstoqueBigBertha();
+		pilhaRecebida = paciencia.getMonteEstoqueBBBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
-			Image newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			Image newImg = img.getScaledInstance(30, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 			JLabel est = new JLabel("");
 			est.setIcon(new ImageIcon(newImg));
 			est.setBounds(10, 11, 30, 50);
@@ -358,22 +358,22 @@ public class tabuleiroBigBertha {
 	}
 
 	public void colocaEstoqueReisNaTela() {
-		pilhaRecebida = paciencia.getMonteEstoqueBigBertha();
+		pilhaRecebida = paciencia.getMonteEstoqueBBBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
-			Image newImg = img.getScaledInstance(40, 60, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			img = retornaFotoDaCarta(carta);
+			Image newImg = img.getScaledInstance(30, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 			JLabel estReis = new JLabel("");
 			estReis.setIcon(new ImageIcon(newImg));
 			estReis.setBounds(394, 53, 30, 50);
 			frame.getContentPane().add(estReis);
-			perguntaPraOndeMover(estReis, carta, "estR");
 		}
 
 	}
 
 	public void colocaFileirasNaTela() {
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(0);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(0);
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		Image img = null;
 		Image newImg = null;
@@ -388,7 +388,7 @@ public class tabuleiroBigBertha {
 			perguntaPraOndeMover(fil1, carta, "t1");
 		}
 
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(1);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(1);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil2 = new JLabel("");
@@ -399,7 +399,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil2);
 			perguntaPraOndeMover(fil2, carta, "t2");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(2);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(2);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil3 = new JLabel("");
@@ -411,7 +411,7 @@ public class tabuleiroBigBertha {
 			perguntaPraOndeMover(fil3, carta, "t3");
 		}
 
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(3);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(3);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil4 = new JLabel("");
@@ -422,7 +422,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil4);
 			perguntaPraOndeMover(fil4, carta, "t4");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(4);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(4);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil5 = new JLabel("");
@@ -433,7 +433,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil5);
 			perguntaPraOndeMover(fil5, carta, "t5");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(5);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(5);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil6 = new JLabel("");
@@ -444,7 +444,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil6);
 			perguntaPraOndeMover(fil6, carta, "t6");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(6);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(6);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil7 = new JLabel("");
@@ -455,7 +455,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil7);
 			perguntaPraOndeMover(fil7, carta, "t7");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(7);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(7);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil8 = new JLabel("");
@@ -467,7 +467,7 @@ public class tabuleiroBigBertha {
 			perguntaPraOndeMover(fil8, carta, "t8");
 		}
 
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(8);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(8);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil9 = new JLabel("");
@@ -478,7 +478,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil9);
 			perguntaPraOndeMover(fil9, carta, "t9");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(9);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(9);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil10 = new JLabel("");
@@ -489,7 +489,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil10);
 			perguntaPraOndeMover(fil10, carta, "t10");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(10);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(10);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil11 = new JLabel("");
@@ -500,7 +500,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil11);
 			perguntaPraOndeMover(fil11, carta, "t11");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(11);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(11);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil12 = new JLabel("");
@@ -511,7 +511,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil12);
 			perguntaPraOndeMover(fil12, carta, "t12");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(12);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(12);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil13 = new JLabel("");
@@ -522,7 +522,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil13);
 			perguntaPraOndeMover(fil13, carta, "t13");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(13);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(13);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil14 = new JLabel("");
@@ -533,7 +533,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fil14);
 			perguntaPraOndeMover(fil14, carta, "t14");
 		}
-		pilhaRecebida = paciencia.getMonteFileiraBigBertha(14);
+		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(14);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fil15 = new JLabel("");
@@ -548,7 +548,7 @@ public class tabuleiroBigBertha {
 	}
 
 	public void colocaFundacoesNaTela() {
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(0);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(0);
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
 		if (carta != null) {
@@ -560,7 +560,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund1);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(1);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(1);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund2 = new JLabel("");
@@ -571,7 +571,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund2);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(2);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(2);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund3 = new JLabel("");
@@ -582,7 +582,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund3);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(3);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(3);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund4 = new JLabel("");
@@ -593,7 +593,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund4);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(4);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(4);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund5 = new JLabel("");
@@ -604,7 +604,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund5);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(5);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(5);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund6 = new JLabel("");
@@ -615,7 +615,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund6);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(6);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(6);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund7 = new JLabel("");
@@ -626,7 +626,7 @@ public class tabuleiroBigBertha {
 			frame.getContentPane().add(fund7);
 		}
 
-		pilhaRecebida = paciencia.getMonteFundacaoBigBertha(7);
+		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(7);
 		carta = pilhaRecebida.visualizarCartaDoTopo();
 		if (carta != null) {
 			JLabel fund8 = new JLabel("");
@@ -641,63 +641,63 @@ public class tabuleiroBigBertha {
 
 	public void insereQuantDeCartas() {
 
-		int est = paciencia.getMonteEstoqueBigBertha().size();
+		int est = paciencia.getMonteEstoqueBBBigBertha().size();
 		JLabel estQnt = new JLabel("(" + est + ")");
 		estQnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		estQnt.setForeground(Color.WHITE);
 		estQnt.setBounds(34, 60, 17, 14);
 		frame.getContentPane().add(estQnt);
 
-		int fu1 = paciencia.getMonteFundacaoBigBertha(0).size();
+		int fu1 = paciencia.getMonteFundacaoBBBigBertha(0).size();
 		JLabel fu1Qnt = new JLabel("(" + fu1 + ")");
 		fu1Qnt.setForeground(Color.WHITE);
 		fu1Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu1Qnt.setBounds(78, 70, 24, 14);
 		frame.getContentPane().add(fu1Qnt);
 
-		int fu2 = paciencia.getMonteFundacaoBigBertha(1).size();
+		int fu2 = paciencia.getMonteFundacaoBBBigBertha(1).size();
 		JLabel fu2Qnt = new JLabel("(" + fu2 + ")");
 		fu2Qnt.setForeground(Color.WHITE);
 		fu2Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu2Qnt.setBounds(118, 70, 24, 14);
 		frame.getContentPane().add(fu2Qnt);
 
-		int fu3 = paciencia.getMonteFundacaoBigBertha(2).size();
+		int fu3 = paciencia.getMonteFundacaoBBBigBertha(2).size();
 		JLabel fu3Qnt = new JLabel("(" + fu3 + ")");
 		fu3Qnt.setForeground(Color.WHITE);
 		fu3Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu3Qnt.setBounds(158, 70, 24, 14);
 		frame.getContentPane().add(fu3Qnt);
 
-		int fu4 = paciencia.getMonteFundacaoBigBertha(3).size();
+		int fu4 = paciencia.getMonteFundacaoBBBigBertha(3).size();
 		JLabel fu4Qnt = new JLabel("(" + fu4 + ")");
 		fu4Qnt.setForeground(Color.WHITE);
 		fu4Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu4Qnt.setBounds(192, 70, 24, 14);
 		frame.getContentPane().add(fu4Qnt);
 
-		int fu5 = paciencia.getMonteFundacaoBigBertha(4).size();
+		int fu5 = paciencia.getMonteFundacaoBBBigBertha(4).size();
 		JLabel fu5Qnt = new JLabel("(" + fu5 + ")");
 		fu5Qnt.setForeground(Color.WHITE);
 		fu5Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu5Qnt.setBounds(233, 70, 24, 14);
 		frame.getContentPane().add(fu5Qnt);
 
-		int fu6 = paciencia.getMonteFundacaoBigBertha(5).size();
+		int fu6 = paciencia.getMonteFundacaoBBBigBertha(5).size();
 		JLabel fu6Qnt = new JLabel("(" + fu6 + ")");
 		fu6Qnt.setForeground(Color.WHITE);
 		fu6Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu6Qnt.setBounds(279, 70, 24, 14);
 		frame.getContentPane().add(fu6Qnt);
 
-		int fu7 = paciencia.getMonteFundacaoBigBertha(6).size();
+		int fu7 = paciencia.getMonteFundacaoBBBigBertha(6).size();
 		JLabel fu7Qnt = new JLabel("(" + fu7 + ")");
 		fu7Qnt.setForeground(Color.WHITE);
 		fu7Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fu7Qnt.setBounds(323, 70, 24, 14);
 		frame.getContentPane().add(fu7Qnt);
 
-		int fu8 = paciencia.getMonteFundacaoBigBertha(7).size();
+		int fu8 = paciencia.getMonteFundacaoBBBigBertha(7).size();
 		JLabel fu8Qnt = new JLabel("(" + fu8 + ")");
 		fu8Qnt.setForeground(Color.WHITE);
 		fu8Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -710,112 +710,112 @@ public class tabuleiroBigBertha {
 		reisQnt.setBounds(417, 100, 17, 14);
 		frame.getContentPane().add(reisQnt);
 
-		int fil1 = paciencia.getMonteFileiraBigBertha(0).size();
+		int fil1 = paciencia.getMonteFileiraBBBigBertha(0).size();
 		JLabel fil1Qnt = new JLabel("(" + fil1 + ")");
 		fil1Qnt.setForeground(Color.WHITE);
 		fil1Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil1Qnt.setBounds(63, 185, 17, 14);
 		frame.getContentPane().add(fil1Qnt);
 
-		int fil2 = paciencia.getMonteFileiraBigBertha(1).size();
+		int fil2 = paciencia.getMonteFileiraBBBigBertha(1).size();
 		JLabel fil2Qnt = new JLabel("(" + fil2 + ")");
 		fil2Qnt.setForeground(Color.WHITE);
 		fil2Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil2Qnt.setBounds(108, 185, 17, 14);
 		frame.getContentPane().add(fil2Qnt);
 
-		int fil3 = paciencia.getMonteFileiraBigBertha(2).size();
+		int fil3 = paciencia.getMonteFileiraBBBigBertha(2).size();
 		JLabel fil3Qnt = new JLabel("(" + fil3 + ")");
 		fil3Qnt.setForeground(Color.WHITE);
 		fil3Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil3Qnt.setBounds(143, 185, 17, 14);
 		frame.getContentPane().add(fil3Qnt);
 
-		int fil4 = paciencia.getMonteFileiraBigBertha(3).size();
+		int fil4 = paciencia.getMonteFileiraBBBigBertha(3).size();
 		JLabel fil4Qnt = new JLabel("(" + fil4 + ")");
 		fil4Qnt.setForeground(Color.WHITE);
 		fil4Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil4Qnt.setBounds(183, 185, 17, 14);
 		frame.getContentPane().add(fil4Qnt);
 
-		int fil5 = paciencia.getMonteFileiraBigBertha(4).size();
+		int fil5 = paciencia.getMonteFileiraBBBigBertha(4).size();
 		JLabel fil5Qnt = new JLabel("(" + fil5 + ")");
 		fil5Qnt.setForeground(Color.WHITE);
 		fil5Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil5Qnt.setBounds(233, 185, 17, 14);
 		frame.getContentPane().add(fil5Qnt);
 
-		int fil6 = paciencia.getMonteFileiraBigBertha(5).size();
+		int fil6 = paciencia.getMonteFileiraBBBigBertha(5).size();
 		JLabel fil6Qnt = new JLabel("(" + fil6 + ")");
 		fil6Qnt.setForeground(Color.WHITE);
 		fil6Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil6Qnt.setBounds(267, 185, 17, 14);
 		frame.getContentPane().add(fil6Qnt);
 
-		int fil7 = paciencia.getMonteFileiraBigBertha(6).size();
+		int fil7 = paciencia.getMonteFileiraBBBigBertha(6).size();
 		JLabel fil7Qnt = new JLabel("(" + fil7 + ")");
 		fil7Qnt.setForeground(Color.WHITE);
 		fil7Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil7Qnt.setBounds(322, 185, 17, 14);
 		frame.getContentPane().add(fil7Qnt);
 
-		int fil8 = paciencia.getMonteFileiraBigBertha(7).size();
+		int fil8 = paciencia.getMonteFileiraBBBigBertha(7).size();
 		JLabel fil8Qnt = new JLabel("(" + fil8 + ")");
 		fil8Qnt.setForeground(Color.WHITE);
 		fil8Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil8Qnt.setBounds(367, 185, 17, 14);
 		frame.getContentPane().add(fil8Qnt);
 
-		int fil9 = paciencia.getMonteFileiraBigBertha(8).size();
+		int fil9 = paciencia.getMonteFileiraBBBigBertha(8).size();
 		JLabel fil9Qnt = new JLabel("(" + fil9 + ")");
 		fil9Qnt.setForeground(Color.WHITE);
 		fil9Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil9Qnt.setBounds(401, 185, 17, 14);
 		frame.getContentPane().add(fil9Qnt);
 
-		int fil10 = paciencia.getMonteFileiraBigBertha(9).size();
+		int fil10 = paciencia.getMonteFileiraBBBigBertha(9).size();
 		JLabel fil10Qnt = new JLabel("(" + fil10 + ")");
 		fil10Qnt.setForeground(Color.WHITE);
 		fil10Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil10Qnt.setBounds(130, 246, 17, 14);
 		frame.getContentPane().add(fil10Qnt);
 
-		int fil11 = paciencia.getMonteFileiraBigBertha(10).size();
+		int fil11 = paciencia.getMonteFileiraBBBigBertha(10).size();
 		JLabel fil11Qnt = new JLabel("(" + fil11 + ")");
 		fil11Qnt.setForeground(Color.WHITE);
 		fil11Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil11Qnt.setBounds(183, 246, 17, 14);
 		frame.getContentPane().add(fil11Qnt);
 
-		int fil12 = paciencia.getMonteFileiraBigBertha(11).size();
+		int fil12 = paciencia.getMonteFileiraBBBigBertha(11).size();
 		JLabel fil12Qnt = new JLabel("(" + fil12 + ")");
 		fil12Qnt.setForeground(Color.WHITE);
 		fil12Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil12Qnt.setBounds(228, 246, 17, 14);
 		frame.getContentPane().add(fil12Qnt);
 
-		int fil13 = paciencia.getMonteFileiraBigBertha(12).size();
+		int fil13 = paciencia.getMonteFileiraBBBigBertha(12).size();
 		JLabel fil13Qnt = new JLabel("(" + fil13 + ")");
 		fil13Qnt.setForeground(Color.WHITE);
 		fil13Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil13Qnt.setBounds(279, 246, 17, 14);
 		frame.getContentPane().add(fil13Qnt);
 
-		int fil14 = paciencia.getMonteFileiraBigBertha(13).size();
+		int fil14 = paciencia.getMonteFileiraBBBigBertha(13).size();
 		JLabel fil14Qnt = new JLabel("(" + fil14 + ")");
 		fil14Qnt.setForeground(Color.WHITE);
 		fil14Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil14Qnt.setBounds(323, 246, 17, 14);
 		frame.getContentPane().add(fil14Qnt);
 
-		int fil15 = paciencia.getMonteFileiraBigBertha(14).size();
+		int fil15 = paciencia.getMonteFileiraBBBigBertha(14).size();
 		JLabel fil15Qnt = new JLabel("(" + fil15 + ")");
 		fil15Qnt.setForeground(Color.WHITE);
 		fil15Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		fil15Qnt.setBounds(367, 247, 17, 14);
 		frame.getContentPane().add(fil15Qnt);
 
-		int descQ = paciencia.getMonteFileiraBigBertha(14).size();
+		int descQ = paciencia.getMonteDescarteBBBigBertha().size();
 		JLabel descQnt = new JLabel("(" + descQ + ")");
 		descQnt.setForeground(Color.WHITE);
 		descQnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -834,8 +834,8 @@ public class tabuleiroBigBertha {
 		return paciencia;
 	}
 
-	public MonteDeCartas inicializaERetornaMonteDeCartas() {
-		MonteDeCartas pilhaRecebida = new MonteDeCartas();
+	public MonteDeCartasBB inicializaERetornaMonteDeCartasBB() {
+		MonteDeCartasBB pilhaRecebida = new MonteDeCartasBB();
 		return pilhaRecebida;
 	}
 
@@ -922,6 +922,9 @@ public class tabuleiroBigBertha {
 			case "Fileira 15":
 				idDestino = 25;
 				break;
+			case "Estoque Reis":
+				idDestino = 26;
+				break;	
 			}
 
 			partida.moverCarta(idOrigem, idDestino);
@@ -954,56 +957,56 @@ public class tabuleiroBigBertha {
 					String[] values3 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 2", "Fileira 3", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values3, "Fileira 1", 7);
 					break;
 				case "t2":
 					String[] values4 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 3", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values4, "Fileira 2", 8);
 					break;
 				case "t3":
 					String[] values5 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 4",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values5, "Fileira 3", 9);
 					break;
 				case "t4":
 					String[] values6 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values6, "Fileira 4", 10);
 					break;
 				case "t5":
 					String[] values7 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values7, "Fileira 5", 11);
 					break;
 				case "t6":
 					String[] values8 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values8, "Fileira 6", 12);
 					break;
 				case "t7":
 					String[] values9 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 8", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values9, "Fileira 7", 13);
 					break;
 				case "t8":
 					String[] values10 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 9", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values10, "Fileira 8", 14);
 					break;
 
@@ -1011,49 +1014,49 @@ public class tabuleiroBigBertha {
 					String[] values11 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 10", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values11, "Fileira 9", 15);
 					break;
 				case "t10":
 					String[] values12 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 11",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values12, "Fileira 10", 16);
 					break;
 				case "t11":
 					String[] values13 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values13, "Fileira 11", 17);
 					break;
 				case "t12":
 					String[] values14 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 11", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 11", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values14, "Fileira 12", 18);
 					break;
 				case "t13":
 					String[] values15 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 11", "Fileira 12", "Fileira 14", "Fileira 15" };
+							"Fileira 11", "Fileira 12", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values15, "Fileira 13", 19);
 					break;
 				case "t14":
 					String[] values16 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 15" };
+							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values16, "Fileira 14", 20);
 					break;
 				case "t15":
 					String[] values17 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14" };
+							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14", "Estoque Reis" };
 					moveCadaCarta(values17, "Fileira 15", 21);
 					break;
 				}

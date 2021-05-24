@@ -4,79 +4,81 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import model.Carta;
-import model.MonteDeCartas;
-import model.Fundacao;
+import model.MonteDeCartasBB;
+import model.FundacaoBB;
 import model.Lado;
-import model.Fileira;
-import model.Estoque;
-import model.Descarte;
+import model.FileiraBB;
+import model.EstoqueBB;
+import model.DescarteBB;
 
 /**
  * Essa classe representa o controlador do jogo Paciência.
  */
 public class PacienciaBigBertha {
 	private static final int QUANTIDADE_FUNDACOES = 8;
-	private static final int QUANTIDADE_FILEIRAS = 15;
-	private int qtdCartasVirarEstoque = 1;
-	private MonteDeCartas estoque = new Estoque();
-	private MonteDeCartas descarte = new Descarte();
-	public MonteDeCartas fundacao1 = new Fundacao();
-	public MonteDeCartas fundacao2 = new Fundacao();
-	public MonteDeCartas fundacao3 = new Fundacao();
-	public MonteDeCartas fundacao4 = new Fundacao();
-	public MonteDeCartas fundacao5 = new Fundacao();
-	public MonteDeCartas fundacao6 = new Fundacao();
-	public MonteDeCartas fundacao7 = new Fundacao();
-	public MonteDeCartas fundacao8 = new Fundacao();
-	public MonteDeCartas fileira1 = new Fileira();
-	public MonteDeCartas fileira2 = new Fileira();
-	public MonteDeCartas fileira3 = new Fileira();
-	public MonteDeCartas fileira4 = new Fileira();
-	public MonteDeCartas fileira5 = new Fileira();
-	public MonteDeCartas fileira6 = new Fileira();
-	public MonteDeCartas fileira7 = new Fileira();
-	public MonteDeCartas fileira8 = new Fileira();
-	public MonteDeCartas fileira9 = new Fileira();
-	public MonteDeCartas fileira10 = new Fileira();
-	public MonteDeCartas fileira11 = new Fileira();
-	public MonteDeCartas fileira12 = new Fileira();
-	public MonteDeCartas fileira13 = new Fileira();
-	public MonteDeCartas fileira14 = new Fileira();
-	public MonteDeCartas fileira15 = new Fileira();
+	private static final int QUANTIDADE_FileiraBBS = 15;
+	private int qtdCartasVirarEstoqueBB = 1;
+	private MonteDeCartasBB EstoqueBB = new EstoqueBB();
+	private MonteDeCartasBB EstoqueBBReis = new FundacaoBB();
+	private MonteDeCartasBB DescarteBB = new DescarteBB();
+	public MonteDeCartasBB FundacaoBB1 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB2 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB3 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB4 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB5 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB6 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB7 = new FundacaoBB();
+	public MonteDeCartasBB FundacaoBB8 = new FundacaoBB();
+	public MonteDeCartasBB FileiraBB1 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB2 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB3 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB4 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB5 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB6 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB7 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB8 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB9 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB10 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB11 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB12 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB13 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB14 = new FileiraBB();
+	public MonteDeCartasBB FileiraBB15 = new FileiraBB();
 
-	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(
-			2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
-	public ArrayList<MonteDeCartas> montesPraInterface = new ArrayList<MonteDeCartas>(
-			2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
+	private ArrayList<MonteDeCartasBB> montes = new ArrayList<MonteDeCartasBB>(
+			2 + QUANTIDADE_FileiraBBS + QUANTIDADE_FUNDACOES);
+	public ArrayList<MonteDeCartasBB> montesPraInterface = new ArrayList<MonteDeCartasBB>(
+			2 + QUANTIDADE_FileiraBBS + QUANTIDADE_FUNDACOES);
 
 	/**
 	 * Este construtor permite estabelecer o estado inicial do jogo.
 	 */
 	public PacienciaBigBertha() {
 
-		/* Adiciona estoque e descarte a lista de montes */
-		montes.add(estoque);
-		montes.add(descarte);
+		/* Adiciona EstoqueBB e DescarteBB a lista de montes */
+		montes.add(EstoqueBB);
+		montes.add(EstoqueBBReis);
+		montes.add(DescarteBB);
 
 		/* Adiciona as fundações a lista de montes */
 		for (int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
-			Fundacao fundacao = new Fundacao();
-			montes.add(fundacao);
-			setMonteFundacaoBigBertha(fundacao, i);
+			FundacaoBB FundacaoBB = new FundacaoBB();
+			montes.add(FundacaoBB);
+			setMonteFundacaoBBBigBertha(FundacaoBB, i);
 		}
 
-		/* Adiciona as fileiras a lista de montes */
-		for (int i = 0; i < QUANTIDADE_FILEIRAS; i++) {
-			Fileira fileira = new Fileira();
+		/* Adiciona as FileiraBBs a lista de montes */
+		for (int i = 0; i < QUANTIDADE_FileiraBBS; i++) {
+			FileiraBB FileiraBB = new FileiraBB();
 
-			/* Preenche as fileiras de cartas e vira a carta do topo */
+			/* Preenche as FileiraBBs de cartas e vira a carta do topo */
 			for (int j = 0; j < 6; j++) {
-				Carta carta = estoque.retirarCartaDoTopo();
-				fileira.preencher(carta);
+				Carta carta = EstoqueBB.retirarCartaDoTopo();
+				FileiraBB.preencher(carta);
 			}
-			fileira.virarCartaDoTopo();
-			montes.add(fileira);
-			setMonteFileiraBigBertha(fileira, i);
+			FileiraBB.virarCartaDoTopo();
+			montes.add(FileiraBB);
+			setMonteFileiraBBBigBertha(FileiraBB, i);
 		}
 
 		setMontesDoJogoBigBertha(montes);
@@ -87,87 +89,87 @@ public class PacienciaBigBertha {
 	 * 
 	 * @param Os montes de cartas do jogo
 	 */
-	public void setMontesDoJogoBigBertha(ArrayList<MonteDeCartas> montes) {
+	public void setMontesDoJogoBigBertha(ArrayList<MonteDeCartasBB> montes) {
 		montesPraInterface = montes;
 	}
 
-	public void setMonteFundacaoBigBertha(Fundacao fundacao, int i) {
+	public void setMonteFundacaoBBBigBertha(FundacaoBB FundacaoBB, int i) {
 		switch (i) {
 		case 0:
-			fundacao1 = fundacao;
+			FundacaoBB1 = FundacaoBB;
 			break;
 		case 1:
-			fundacao2 = fundacao;
+			FundacaoBB2 = FundacaoBB;
 			break;
 		case 2:
-			fundacao3 = fundacao;
+			FundacaoBB3 = FundacaoBB;
 			break;
 		case 3:
-			fundacao4 = fundacao;
+			FundacaoBB4 = FundacaoBB;
 			break;
 		case 4:
-			fundacao5 = fundacao;
+			FundacaoBB5 = FundacaoBB;
 			break;
 		case 5:
-			fundacao6 = fundacao;
+			FundacaoBB6 = FundacaoBB;
 			break;
 		case 6:
-			fundacao7 = fundacao;
+			FundacaoBB7 = FundacaoBB;
 			break;
 		case 7:
-			fundacao8 = fundacao;
+			FundacaoBB8 = FundacaoBB;
 			break;
 
 		}
 
 	}
 
-	public void setMonteFileiraBigBertha(Fileira fileira, int i) {
+	public void setMonteFileiraBBBigBertha(FileiraBB FileiraBB, int i) {
 		switch (i) {
 		case 0:
-			fileira1 = fileira;
+			FileiraBB1 = FileiraBB;
 			break;
 		case 1:
-			fileira2 = fileira;
+			FileiraBB2 = FileiraBB;
 			break;
 		case 2:
-			fileira3 = fileira;
+			FileiraBB3 = FileiraBB;
 			break;
 		case 3:
-			fileira4 = fileira;
+			FileiraBB4 = FileiraBB;
 			break;
 		case 4:
-			fileira5 = fileira;
+			FileiraBB5 = FileiraBB;
 			break;
 		case 5:
-			fileira6 = fileira;
+			FileiraBB6 = FileiraBB;
 			break;
 		case 6:
-			fileira7 = fileira;
+			FileiraBB7 = FileiraBB;
 			break;
 		case 7:
-			fileira8 = fileira;
+			FileiraBB8 = FileiraBB;
 			break;
 		case 8:
-			fileira9 = fileira;
+			FileiraBB9 = FileiraBB;
 			break;
 		case 9:
-			fileira10 = fileira;
+			FileiraBB10 = FileiraBB;
 			break;
 		case 10:
-			fileira11 = fileira;
+			FileiraBB11 = FileiraBB;
 			break;
 		case 11:
-			fileira12 = fileira;
+			FileiraBB12 = FileiraBB;
 			break;
 		case 12:
-			fileira13 = fileira;
+			FileiraBB13 = FileiraBB;
 			break;
 		case 13:
-			fileira14 = fileira;
+			FileiraBB14 = FileiraBB;
 			break;
 		case 14:
-			fileira15 = fileira;
+			FileiraBB15 = FileiraBB;
 			break;
 		}
 	}
@@ -175,125 +177,129 @@ public class PacienciaBigBertha {
 	/**
 	 * Função para pegar os montes do jogo na interface
 	 */
-	public ArrayList<MonteDeCartas> getMontesDoJogoBigBertha() {
+	public ArrayList<MonteDeCartasBB> getMontesDoJogoBigBertha() {
 		return montesPraInterface;
 	}
 
-	public MonteDeCartas getMonteEstoqueBigBertha() {
-		return estoque;
+	public MonteDeCartasBB getMonteEstoqueBBBigBertha() {
+		return EstoqueBB;
+	}
+	
+	public MonteDeCartasBB getMonteEstoqueBBReisBigBertha() {
+		return EstoqueBBReis;
 	}
 
-	public MonteDeCartas getMonteDescarteBigBertha() {
-		return descarte;
+	public MonteDeCartasBB getMonteDescarteBBBigBertha() {
+		return DescarteBB;
 	}
 
-	public MonteDeCartas getMonteFundacaoBigBertha(int i) {
+	public MonteDeCartasBB getMonteFundacaoBBBigBertha(int i) {
 		switch (i) {
 		case 0:
-			return fundacao1;
+			return FundacaoBB1;
 		case 1:
-			return fundacao2;
+			return FundacaoBB2;
 		case 2:
-			return fundacao3;
+			return FundacaoBB3;
 		case 3:
-			return fundacao4;
+			return FundacaoBB4;
 		case 4:
-			return fundacao5;
+			return FundacaoBB5;
 		case 5:
-			return fundacao6;
+			return FundacaoBB6;
 		case 6:
-			return fundacao7;
+			return FundacaoBB7;
 		case 7:
-			return fundacao8;
+			return FundacaoBB8;
 		}
-		return fundacao1;
+		return FundacaoBB1;
 	}
 
-	public MonteDeCartas getMonteFileiraBigBertha(int i) {
+	public MonteDeCartasBB getMonteFileiraBBBigBertha(int i) {
 		switch (i) {
 		case 0:
-			return fileira1;
+			return FileiraBB1;
 		case 1:
-			return fileira2;
+			return FileiraBB2;
 		case 2:
-			return fileira3;
+			return FileiraBB3;
 		case 3:
-			return fileira4;
+			return FileiraBB4;
 		case 4:
-			return fileira5;
+			return FileiraBB5;
 		case 5:
-			return fileira6;
+			return FileiraBB6;
 		case 6:
-			return fileira7;
+			return FileiraBB7;
 		case 7:
-			return fileira8;
+			return FileiraBB8;
 		case 8:
-			return fileira9;
+			return FileiraBB9;
 		case 9:
-			return fileira10;
+			return FileiraBB10;
 		case 10:
-			return fileira11;
+			return FileiraBB11;
 		case 11:
-			return fileira12;
+			return FileiraBB12;
 		case 12:
-			return fileira13;
+			return FileiraBB13;
 		case 13:
-			return fileira14;
+			return FileiraBB14;
 		case 14:
-			return fileira15;
+			return FileiraBB15;
 
 		}
-		return fileira1;
+		return FileiraBB1;
 	}
 
-	// recebe o index da carta e o num da fileira
-	public Carta getCarta(int i, int fileira) {
+	// recebe o index da carta e o num da FileiraBB
+	public Carta getCarta(int i, int FileiraBB) {
 
-		switch (fileira) {
+		switch (FileiraBB) {
 		case 1:
-			Carta carta = fileira1.getCarta(i);
+			Carta carta = FileiraBB1.getCarta(i);
 			return carta;
 		case 2:
-			carta = fileira2.getCarta(i);
+			carta = FileiraBB2.getCarta(i);
 			return carta;
 		case 3:
-			carta = fileira3.getCarta(i);
+			carta = FileiraBB3.getCarta(i);
 			return carta;
 		case 4:
-			carta = fileira4.getCarta(i);
+			carta = FileiraBB4.getCarta(i);
 			return carta;
 		case 5:
-			carta = fileira5.getCarta(i);
+			carta = FileiraBB5.getCarta(i);
 			return carta;
 		case 6:
-			carta = fileira6.getCarta(i);
+			carta = FileiraBB6.getCarta(i);
 			return carta;
 		case 7:
-			carta = fileira7.getCarta(i);
+			carta = FileiraBB7.getCarta(i);
 			return carta;
 		case 8:
-			carta = fileira8.getCarta(i);
+			carta = FileiraBB8.getCarta(i);
 			return carta;
 		case 9:
-			carta = fileira9.getCarta(i);
+			carta = FileiraBB9.getCarta(i);
 			return carta;
 		case 10:
-			carta = fileira10.getCarta(i);
+			carta = FileiraBB10.getCarta(i);
 			return carta;
 		case 11:
-			carta = fileira11.getCarta(i);
+			carta = FileiraBB11.getCarta(i);
 			return carta;
 		case 12:
-			carta = fileira12.getCarta(i);
+			carta = FileiraBB12.getCarta(i);
 			return carta;
 		case 13:
-			carta = fileira13.getCarta(i);
+			carta = FileiraBB13.getCarta(i);
 			return carta;
 		case 14:
-			carta = fileira14.getCarta(i);
+			carta = FileiraBB14.getCarta(i);
 			return carta;
 		case 15:
-			carta = fileira15.getCarta(i);
+			carta = FileiraBB15.getCarta(i);
 			return carta;
 
 		}
@@ -304,12 +310,12 @@ public class PacienciaBigBertha {
 
 	/**
 	 * Essa função permite definir a quantidade de cartas a serem viradas no
-	 * estoque.
+	 * EstoqueBB.
 	 * 
 	 * @param quantidade de cartas.
 	 */
-	public void definirQtdVirarEstoque(int n) {
-		qtdCartasVirarEstoque = n;
+	public void definirQtdVirarEstoqueBB(int n) {
+		qtdCartasVirarEstoqueBB = n;
 	}
 
 	/**
@@ -323,23 +329,22 @@ public class PacienciaBigBertha {
 		if (idOrigem < 1 || idDestino < 1)
 			return false;
 
-		MonteDeCartas origem = montes.get(idOrigem - 1);
-		MonteDeCartas destino = montes.get(idDestino - 1);
-
+		MonteDeCartasBB origem = montes.get(idOrigem - 1);
+		MonteDeCartasBB destino = montes.get(idDestino - 1);
 		Carta c = origem.visualizarCartaDoTopo();
 		if (c == null) {
-			if (origem instanceof Estoque) { // o estoque está vazio, é necessário reestabelece-lo
-				while (!descarte.estaVazio()) {
-					Carta c2 = descarte.retirarCartaDoTopo();
-					Estoque est = (Estoque) estoque;
-					est.restabelecer(c2, (MonteDeCartas) descarte);
+			if (origem instanceof EstoqueBB) { // o EstoqueBB está vazio, é necessário reestabelece-lo
+				while (!DescarteBB.estaVazio()) {
+					Carta c2 = DescarteBB.retirarCartaDoTopo();
+					EstoqueBB est = (EstoqueBB) EstoqueBB;
+					est.restabelecer(c2, (MonteDeCartasBB) DescarteBB);
 				}
 			}
 			return false; // a origem não possui carta, logo não é possíel realizar o movimento.
 		}
 
-		if (origem instanceof Estoque) { // a origem é o estoque, logo há possibilidade de fornecer mais de uma carta
-			for (int n = 0; n < qtdCartasVirarEstoque; n++) {
+		if (origem instanceof EstoqueBB) { // a origem é o EstoqueBB, logo há possibilidade de fornecer mais de uma carta
+			for (int n = 0; n < qtdCartasVirarEstoqueBB; n++) {
 				c = origem.visualizarCartaDoTopo();
 
 				if (!origem.estaVazio()) {
@@ -351,7 +356,7 @@ public class PacienciaBigBertha {
 				}
 			}
 			return true;
-		} else { // se a origem não é o estoque
+		} else { // se a origem não é o EstoqueBB
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
@@ -361,12 +366,12 @@ public class PacienciaBigBertha {
 	}
 
 	/**
-	 * Essa função retira carta do estoque para o descarte.
+	 * Essa função retira carta do EstoqueBB para o DescarteBB.
 	 * 
 	 * @return se retirou ou nÃ£o.
 	 */
 	public boolean exibirCarta() {
-		return moverCarta(1, 2); // 1 é estoque, 2 é descarte
+		return moverCarta(1, 2); // 1 é EstoqueBB, 2 é DescarteBB
 	}
 
 	/**
@@ -376,9 +381,9 @@ public class PacienciaBigBertha {
 	 */
 	public boolean verificarVitoria() {
 		int qtdFundacoesCompletas = 0;
-		for (MonteDeCartas monte : montes) {
-			if (monte instanceof Fundacao) {
-				Fundacao f = (Fundacao) monte;
+		for (MonteDeCartasBB monte : montes) {
+			if (monte instanceof FundacaoBB) {
+				FundacaoBB f = (FundacaoBB) monte;
 				if (f.estaCompleta()) {
 					qtdFundacoesCompletas++;
 					if (qtdFundacoesCompletas == 8) {
@@ -391,18 +396,18 @@ public class PacienciaBigBertha {
 	}
 
 	/**
-	 * Essa função verifica se uma fileira possui uma sequência de cartas.
+	 * Essa função verifica se uma FileiraBB possui uma sequência de cartas.
 	 * 
-	 * @param identificador da fileira.
-	 * @return se tem sequencia na fileira ou não.
+	 * @param identificador da FileiraBB.
+	 * @return se tem sequencia na FileiraBB ou não.
 	 */
-	public boolean temSequenciaNaFileira(int idMonte) {
+	public boolean temSequenciaNaFileiraBB(int idMonte) {
 		if (idMonte < 1)
 			return false;
-		MonteDeCartas mdc = montes.get(idMonte - 1);
+		MonteDeCartasBB mdc = montes.get(idMonte - 1);
 
-		if (mdc instanceof Fileira) {
-			Fileira f = (Fileira) mdc;
+		if (mdc instanceof FileiraBB) {
+			FileiraBB f = (FileiraBB) mdc;
 
 			Stack<Carta> aux = new Stack<Carta>();
 			while (true) {
@@ -431,7 +436,7 @@ public class PacienciaBigBertha {
 	}
 
 	/**
-	 * Esta função permite o jogador mover uma sequência de uma fileira para outra.
+	 * Esta função permite o jogador mover uma sequência de uma FileiraBB para outra.
 	 * 
 	 * @param identificador do monte de origem.
 	 * @param identificador do monte de destino.
@@ -442,23 +447,23 @@ public class PacienciaBigBertha {
 		if (idOrigem < 1 || idDestino < 1)
 			return false;
 
-		MonteDeCartas origem = montes.get(idOrigem - 1);
-		MonteDeCartas destino = montes.get(idDestino - 1);
+		MonteDeCartasBB origem = montes.get(idOrigem - 1);
+		MonteDeCartasBB destino = montes.get(idDestino - 1);
 
 		Stack<Carta> aux = new Stack<Carta>();
 
-		if (origem instanceof Fileira && destino instanceof Fileira) {
-			Fileira fileiraOrigem = (Fileira) origem;
-			Fileira fileiraDestino = (Fileira) destino;
+		if (origem instanceof FileiraBB && destino instanceof FileiraBB) {
+			FileiraBB FileiraBBOrigem = (FileiraBB) origem;
+			FileiraBB FileiraBBDestino = (FileiraBB) destino;
 
 			int count = 0;
 			while (count < quantidadeCartas) {
-				Carta c = fileiraOrigem.retirar();
+				Carta c = FileiraBBOrigem.retirar();
 				if (c != null) {
 					if (c.getLado() == Lado.CIMA) {
 						aux.push(c);
 					} else {
-						fileiraOrigem.preencher(c);
+						FileiraBBOrigem.preencher(c);
 						break;
 					}
 				} else {
@@ -469,20 +474,20 @@ public class PacienciaBigBertha {
 
 			if (aux.size() == quantidadeCartas) {
 				Carta topoOrigem = aux.pop();
-				boolean inseriu = fileiraDestino.receberCarta(topoOrigem, fileiraOrigem);
+				boolean inseriu = FileiraBBDestino.receberCarta(topoOrigem, FileiraBBOrigem);
 
 				if (inseriu) {
 					while (!aux.isEmpty()) {
-						fileiraDestino.preencher(aux.pop());
+						FileiraBBDestino.preencher(aux.pop());
 					}
-					fileiraOrigem.virarCartaDoTopo();
+					FileiraBBOrigem.virarCartaDoTopo();
 					return true;
 				} else {
-					fileiraOrigem.preencher(topoOrigem);
+					FileiraBBOrigem.preencher(topoOrigem);
 				}
 			}
 			while (!aux.isEmpty()) {
-				fileiraOrigem.preencher(aux.pop());
+				FileiraBBOrigem.preencher(aux.pop());
 			}
 			return false;
 
@@ -496,20 +501,20 @@ public class PacienciaBigBertha {
 		String espacamento = "  ";
 		int idMonte = 1;
 
-		for (MonteDeCartas monte : montes) {
+		for (MonteDeCartasBB monte : montes) {
 			if (idMonte > 9 && espacamento.equals("  "))
 				espacamento = " ";
-			if (monte instanceof Estoque) {
-				opcoes += "   " + idMonte++ + espacamento + "- Estoque:   ";
+			if (monte instanceof EstoqueBB) {
+				opcoes += "   " + idMonte++ + espacamento + "- EstoqueBB:   ";
 				opcoes += monte + "\n";
-			} else if (monte instanceof Descarte) {
-				opcoes += "   " + idMonte++ + espacamento + "- Descarte:  ";
+			} else if (monte instanceof DescarteBB) {
+				opcoes += "   " + idMonte++ + espacamento + "- DescarteBB:  ";
 				opcoes += monte + "\n";
-			} else if (monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + ":  ";
+			} else if (monte instanceof FundacaoBB) {
+				opcoes += "   " + idMonte++ + espacamento + "- FundaçãoBB" + ":  ";
 				opcoes += monte + "\n";
-			} else if (monte instanceof Fileira) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";
+			} else if (monte instanceof FileiraBB) {
+				opcoes += "   " + idMonte++ + espacamento + "- FileiraBB" + ":   ";
 				opcoes += monte + "\n";
 			}
 		}

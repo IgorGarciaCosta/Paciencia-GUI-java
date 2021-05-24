@@ -31,7 +31,7 @@ public class PartidaBigBertha {
 	}
 	
 	public void definirQtdVirarEstoque(int qtd) {
-		paciencia.definirQtdVirarEstoque(qtd);
+		paciencia.definirQtdVirarEstoqueBB(qtd);
 	}
 	
 	public boolean exibirCarta() {
@@ -43,7 +43,7 @@ public class PartidaBigBertha {
 	}
 	
 	public boolean temSequenciaNaFileira(int idMonte) {
-		return paciencia.temSequenciaNaFileira(idMonte);
+		return paciencia.temSequenciaNaFileiraBB(idMonte);
 	}
 
 	public boolean moverSequencia(int idOrigem, int idDestino, int quantidadeCartas) {

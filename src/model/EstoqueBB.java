@@ -3,18 +3,24 @@ package model;
 import java.util.Collections;
 import java.util.Stack;
 
-public class Estoque extends MonteDeCartas {
+public class EstoqueBB extends MonteDeCartasBB {
 
-	public Estoque() {
+	public EstoqueBB() {
 
 		super();
+		final Stack<Carta> cartas2 = new Stack<Carta>();// baralho auxiliar
 
-		/* Preenche o EstoqueBB com todas as 52 cartas dispon√≠veis no jogo. */
+		/* Preenche o estoque com todas as 104 cartas dispon√≠veis no jogo. */
 		for (Naipe naipe : Naipe.values()) {
 			for (Numeracao valor : Numeracao.values()) {
 				Carta carta = new Carta(naipe, valor);
 				this.cartas.push(carta);
+				cartas2.push(carta);
 			}
+		}
+		//adiciona as cartas do baralho auxiliar ao principal
+		for (int i = 0; i < cartas2.size(); i++) {
+			cartas.push(cartas2.get(i));
 		}
 		
 		Collections.shuffle(cartas); // embaralha as cartas!!
@@ -22,7 +28,7 @@ public class Estoque extends MonteDeCartas {
 	}
 
 	/*
-	 * Esta funÁ„o sobrescrita implementa como EstoqueBB recebe uma carta.
+	 * Esta funÁ„o sobrescrita implementa como Estoque recebe uma carta.
 	 * 
 	 * @param carta a ser recebida.
 	 * 
@@ -31,12 +37,12 @@ public class Estoque extends MonteDeCartas {
 	 * @return se a carta foi recebida ou n√£o.
 	 */
 	@Override
-	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
-		return false; // EstoqueBB n√£o recebe carta!!!
+	public boolean receberCarta(Carta carta, MonteDeCartasBB origem) {
+		return false; // estoque n√£o recebe carta!!!
 	}
 
 	/*
-	 * Esta funÁ„o sobrescrita implementa como EstoqueBB vira a carta do topo.
+	 * Esta funÁ„o sobrescrita implementa como Estoque vira a carta do topo.
 	 * 
 	 * @return carta do topo.
 	 */
@@ -52,8 +58,8 @@ public class Estoque extends MonteDeCartas {
 	}
 
 	/*
-	 * Esta fun√ß√£o permite o EstoqueBB se reestabelecer quando √© esgotado, atrav√©s
-	 * do Descarte.
+	 * Esta fun√ß√£o permite o estoque se reestabelecer quando √© esgotado, atrav√©s
+	 * do DescarteBB.
 	 * 
 	 * @param carta a ser inserida.
 	 * 
@@ -61,8 +67,8 @@ public class Estoque extends MonteDeCartas {
 	 * 
 	 * @return se a carta foi reestabelecida ou n√£o.
 	 */
-	public boolean restabelecer(Carta carta, MonteDeCartas origem) {
-		if (origem instanceof Descarte) {
+	public boolean restabelecer(Carta carta, MonteDeCartasBB origem) {
+		if (origem instanceof DescarteBB) {
 			carta.esconder();
 			this.cartas.push(carta);
 			return true;
