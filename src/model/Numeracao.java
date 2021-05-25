@@ -26,6 +26,10 @@ public enum Numeracao {
     public int getValor() {
 		return valor;
 	}
+    
+    public String getSimbolo() {
+    	return simbolo;
+    }
 
 
 	@Override

@@ -704,7 +704,8 @@ public class tabuleiroBigBertha {
 		fu8Qnt.setBounds(367, 70, 17, 14);
 		frame.getContentPane().add(fu8Qnt);
 
-		JLabel reisQnt = new JLabel("(0)");
+		int rQnt = paciencia.getMonteEstoqueBBReisBigBertha().size();
+		JLabel reisQnt = new JLabel("(" + rQnt + ")");
 		reisQnt.setForeground(Color.WHITE);
 		reisQnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		reisQnt.setBounds(417, 100, 17, 14);
@@ -924,7 +925,7 @@ public class tabuleiroBigBertha {
 				break;
 			case "Estoque Reis":
 				idDestino = 26;
-				break;	
+				break;
 			}
 
 			partida.moverCarta(idOrigem, idDestino);
@@ -949,7 +950,7 @@ public class tabuleiroBigBertha {
 					String[] values2 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
-							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15" };
+							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
 					moveCadaCarta(values2, "Descarte", 2);
 					break;
 
@@ -1022,42 +1023,42 @@ public class tabuleiroBigBertha {
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 11",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values12, "Fileira 10", 16);
+					moveCadaCarta(values12, "Fileira 10", 20);
 					break;
 				case "t11":
 					String[] values13 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 12", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values13, "Fileira 11", 20);
+					moveCadaCarta(values13, "Fileira 11", 21);
 					break;
 				case "t12":
 					String[] values14 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 13", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values14, "Fileira 12", 21);
+					moveCadaCarta(values14, "Fileira 12", 22);
 					break;
 				case "t13":
 					String[] values15 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 14", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values15, "Fileira 13", 22);
+					moveCadaCarta(values15, "Fileira 13", 23);
 					break;
 				case "t14":
 					String[] values16 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 15", "Estoque Reis" };
-					moveCadaCarta(values16, "Fileira 14", 23);
+					moveCadaCarta(values16, "Fileira 14", 24);
 					break;
 				case "t15":
 					String[] values17 = { "Fundação 1", "Fundação 2", "Fundação 3", "Fundação 4", "Fundação 5",
 							"Fundação 6", "Fundação 7", "Fundação 8", "Fileira 1", "Fileira 2", "Fileira 3",
 							"Fileira 4", "Fileira 5", "Fileira 6", "Fileira 7", "Fileira 8", "Fileira 9", "Fileira 10",
 							"Fileira 11", "Fileira 12", "Fileira 13", "Fileira 14", "Estoque Reis" };
-					moveCadaCarta(values17, "Fileira 15", 24);
+					moveCadaCarta(values17, "Fileira 15", 25);
 					break;
 				}
 

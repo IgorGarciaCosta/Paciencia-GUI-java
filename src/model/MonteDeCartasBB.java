@@ -6,94 +6,107 @@ import java.util.Stack;
 * Esta classe representa um monte de cartas.
 */
 public class MonteDeCartasBB {
-	
+
 	protected Stack<Carta> cartas; // um monte é representado por uma pilha
-	
+
 	public MonteDeCartasBB() {
 		this.cartas = new Stack<Carta>();
-		
+
 	}
-	
+
 	/**
-	* Esta função define como o monte de cartas deve receber uma carta.
-	* @param carta a ser recebida.
-	* @param monte de origem.
-	* @return se a carta foi recebida ou nÃ£o
-	*/
+	 * Esta função define como o monte de cartas deve receber uma carta.
+	 * 
+	 * @param carta a ser recebida.
+	 * @param monte de origem.
+	 * @return se a carta foi recebida ou nÃ£o
+	 */
 	public boolean receberCarta(Carta carta, MonteDeCartasBB origem) {
 		this.cartas.push(carta);
 		return true;
 	}
-	
-	
+
+	public boolean recebeCartaEstRei(Carta carta) {
+		System.out.print(carta.getNumeracao());
+		Numeracao num = carta.getNumeracao();
+		if (num.getSimbolo().equals("K")) {
+			this.cartas.push(carta);
+			return true;
+		}
+		return false;
+	}
+
 	public void addCarta(Carta carta) {
 		this.cartas.push(carta);
 	}
-	
+
 	/*
-	* Esta função permite retirar uma carta do topo.
-	* @return carta do topo que foi retirada.
-	*/
+	 * Esta função permite retirar uma carta do topo.
+	 * 
+	 * @return carta do topo que foi retirada.
+	 */
 	public Carta retirarCartaDoTopo() {
 		if (!cartas.isEmpty()) {
 			return this.cartas.pop();
 		}
 		return null;
 	}
-	
+
 	/*
-	* Esta função permite visualizar uma carta do topo.
-	* @return carta do topo para visualização.
-	*/
+	 * Esta função permite visualizar uma carta do topo.
+	 * 
+	 * @return carta do topo para visualização.
+	 */
 	public Carta visualizarCartaDoTopo() {
 		if (!cartas.isEmpty()) {
 			return this.cartas.peek();
 		}
 		return null;
 	}
-	
+
 	/*
-	* Esta função permite virar uma carta do topo.
-	* @return carta do topo que foi virada.
-	*/
+	 * Esta função permite virar uma carta do topo.
+	 * 
+	 * @return carta do topo que foi virada.
+	 */
 	public Carta virarCartaDoTopo() {
 		Carta topo = visualizarCartaDoTopo();
-		
-		if(!estaVazio()) {
+
+		if (!estaVazio()) {
 			topo.mostrar();
 		}
-		
+
 		return topo;
 	}
-	
+
 	/*
-	* Esta função retorna se o monte está vazio.
-	* @return se está vazio ou não.
-	*/
+	 * Esta função retorna se o monte está vazio.
+	 * 
+	 * @return se está vazio ou não.
+	 */
 	public boolean estaVazio() {
 		return cartas.isEmpty();
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		String visualizacao = cartas.toString();
-		
-		if (visualizacao.length() > 2) return visualizacao.substring(1, visualizacao.length() - 1);
+
+		if (visualizacao.length() > 2)
+			return visualizacao.substring(1, visualizacao.length() - 1);
 		return "";
 	}
-	
+
 	public Carta getCarta(int i) {
-		if(!cartas.isEmpty()) {
+		if (!cartas.isEmpty()) {
 			Carta carta = cartas.get(i);
 			return carta;
 		}
 		return null;
 	}
-	
 
 	public int size() {
 		return cartas.size();
 	}
-	
+
 }

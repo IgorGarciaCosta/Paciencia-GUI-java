@@ -359,11 +359,19 @@ public class PacienciaBigBertha {
 			}
 			return true;
 		} else { // se a origem não é o EstoqueBB
-			System.out.print(destino.receberCarta(c, origem)+" "+c+" /  "+destino);
-			System.out.print("  Tab de origem: "+ origem);
+			
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
+			}
+			
+			//envio para o estoque de Reis
+			if(idDestino==26) {
+				if(destino.recebeCartaEstRei(c)) {
+					origem.retirarCartaDoTopo();
+					return true;
+				}
+				
 			}
 			return false;
 		}
