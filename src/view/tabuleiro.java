@@ -860,9 +860,7 @@ public class tabuleiro {
 	public void perguntaPraOndeMover(JLabel labelDaCarta, Carta carta, String pilhaClicada) {
 		labelDaCarta.addMouseListener((MouseListener) new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				String[] values = {};
 				Object selected = null;
-				int idOrigem = 0;
 				switch (pilhaClicada) {
 				case "est":
 					String[] values1 = { "Descarte" };

@@ -21,7 +21,7 @@ public class Main {
 	/**
 	 * Imprime as opções de acordo com cada estado do jogo.
 	 */
-	private static void opcoes() {
+	static void opcoes() {
 		if (partida.temPartidaAtiva()) {
 			if (partida.verificarVitoria()) {
 				System.out
@@ -54,6 +54,7 @@ public class Main {
 			System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
 			System.out.println("║  1 - Iniciar jogo                                                               ║");
 			System.out.println("║  2 - Finalizar                                                                  ║");
+			System.out.println("║  3 - Ir para o menu de interfaces.                                              ║");
 			System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
 			System.out.println();
 		}
@@ -137,7 +138,7 @@ public class Main {
 	/**
 	 * Exibe todo o jogo.
 	 */
-	private static void menu() {
+	static void menu() {
 		String opcao;
 		Scanner entrada = new Scanner(System.in);
 
@@ -279,6 +280,10 @@ public class Main {
 
 					if (opcao.equals("1"))
 						opcao = "-1";
+				}
+				// retorna para o menu gráfico
+				else if (opcao.equals("3")) {
+					menu.main(null);
 				} else {
 					// Reseta as variáveis se uma opção indisponível for selecionada
 					opcao = "0";

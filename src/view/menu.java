@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -56,7 +54,7 @@ public class menu {
 		lblNewLabel.setFont(new Font("Old English Text MT", Font.PLAIN, 40));
 		frame.getContentPane().add(lblNewLabel);
 
-		JButton btnNormal = new JButton("Paci\u00EAncia Normal");
+		JButton btnNormal = new JButton("Paci\u00EAncia normal com interface");
 		btnNormal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -66,10 +64,10 @@ public class menu {
 		});
 
 		btnNormal.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNormal.setBounds(150, 141, 165, 23);
+		btnNormal.setBounds(109, 141, 239, 23);
 		frame.getContentPane().add(btnNormal);
 
-		JButton btnPacinciaBigBertha = new JButton("Paci\u00EAncia Big Bertha");
+		JButton btnPacinciaBigBertha = new JButton("Paci\u00EAncia Big Bertha com interface");
 		btnPacinciaBigBertha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -78,7 +76,7 @@ public class menu {
 			}
 		});
 		btnPacinciaBigBertha.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnPacinciaBigBertha.setBounds(150, 175, 165, 23);
+		btnPacinciaBigBertha.setBounds(109, 175, 239, 23);
 		frame.getContentPane().add(btnPacinciaBigBertha);
 
 		JButton btnFinalizar = new JButton("Finalizar");
@@ -88,8 +86,24 @@ public class menu {
 				System.exit(0);
 			}
 		});
-		btnFinalizar.setBounds(150, 209, 165, 23);
+		btnFinalizar.setBounds(175, 209, 116, 23);
 		frame.getContentPane().add(btnFinalizar);
+		
+		JButton btnNormalSI = new JButton("Fechar interface gr\u00E1fica");
+		btnNormalSI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				frame.setVisible(false);
+				//Main.menu();
+			}
+		});
+		btnNormalSI.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnNormalSI.setBounds(109, 107, 239, 23);
+		frame.getContentPane().add(btnNormalSI);
 
 	}
+	
+	
+	
+	
 }
