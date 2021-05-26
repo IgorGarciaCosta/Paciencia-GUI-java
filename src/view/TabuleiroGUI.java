@@ -26,6 +26,11 @@ import java.awt.Image;
 
 import javax.swing.JLabel;
 
+/**
+ * Classe para controlar se o update da página vai reiniciar o baralho ou se
+ * apenas ocorreu um movimento de carta.
+ * 
+ */
 class ControladorDeUpdateDePagina {
 	static boolean novoJogoClicado = true;
 
@@ -48,7 +53,7 @@ class ControladorDeUpdateDePagina {
 	}
 }
 
-public class tabuleiro {
+public class TabuleiroGUI {
 	static Partida partida = null;
 	Paciencia paciencia = null;
 	MonteDeCartas pilhaRecebida = null;
@@ -62,7 +67,7 @@ public class tabuleiro {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					tabuleiro window = new tabuleiro();
+					TabuleiroGUI window = new TabuleiroGUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,14 +79,18 @@ public class tabuleiro {
 	/**
 	 * Create the application.
 	 */
-	public tabuleiro() {
+	public TabuleiroGUI() {
 		initialize();
 	}
 
+	/**
+	 * Atualiza a página cada vez que um movimento é feito.
+	 * 
+	 */
 	public void atualizaPagina() {
 		frame.dispose();
 		frame.setVisible(false);
-		tabuleiro.main(null);
+		TabuleiroGUI.main(null);
 	}
 
 	/**
@@ -131,7 +140,7 @@ public class tabuleiro {
 				frame.dispose();
 				frame.setVisible(false);
 				partida.encerrarPartida();
-				menu.main(null);
+				Menu.main(null);
 			}
 		});
 
@@ -243,6 +252,10 @@ public class tabuleiro {
 
 	}
 
+	/**
+	 * Imprime na tela as quantidades de cartas que há em cada pilha.
+	 * 
+	 */
 	public void insereQuantDeCartas() {
 		int tab1 = paciencia.getMonteFileira(0).size();
 		JLabel t1Number = new JLabel("(" + tab1 + ")");
@@ -336,6 +349,10 @@ public class tabuleiro {
 		frame.getContentPane().add(f4Number);
 	}
 
+	/**
+	 * Imprime na tela o descarte com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaDescarteNaTela() {
 		pilhaRecebida = paciencia.getMonteDescarte();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -352,6 +369,10 @@ public class tabuleiro {
 
 	}
 
+	/**
+	 * Imprime na tela o estoque com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaEstoqueNaTela() {
 		pilhaRecebida = paciencia.getMonteEstoque();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -367,6 +388,10 @@ public class tabuleiro {
 
 	}
 
+	/**
+	 * Imprime na tela as fundações com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaFundacoesNaTela() {
 
 		pilhaRecebida = paciencia.getMonteFundacao(0);
@@ -416,6 +441,10 @@ public class tabuleiro {
 
 	}
 
+	/**
+	 * Imprime na tela as fileiras com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaFileirasNaTela() {
 
 		pilhaRecebida = paciencia.getMonteFileira(0);
@@ -517,70 +546,15 @@ public class tabuleiro {
 
 			MonteDeCartas aux = pilhaRecebida;
 			Carta cartaParaAnalisar = aux.getCarta(6);
-			showFreeCards(cartaParaAnalisar, aux, 7);
 
 		}
 
 	}
 
-	public void showFreeCards(Carta cartaParaAnalisar, MonteDeCartas aux, int idDeFileira) {
-		
-		switch (idDeFileira) {
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-		case 7:
-			MonteDeCartas cartasParaMostar = new MonteDeCartas();
-			int tamLimite = aux.size();
-			if (tamLimite < 5 && tamLimite > 1) {
-
-				for (int i = tamLimite-2; i >= 0; i--) {
-					cartasParaMostar.addCarta(aux.getCarta(i));
-				}
-
-			} else {// se o tamLim for >5
-				for (int i = 4; i >= 0; i--) {
-					cartasParaMostar.addCarta(aux.getCarta(i));
-				}
-			}
-
-			for (int j = 0; j < 4; j++) {
-				cartaParaAnalisar = cartasParaMostar.getCarta(j);
-				switch (j) {
-				case 0:
-					
-					break;
-				case 1:
-					
-					break;
-				case 2:
-					
-					
-					
-					break;
-				case 3:
-					
-					break;
-				case 4:
-					
-					
-					break;
-				}
-			}
-
-			break;
-		}
-	}
-
+	/**
+	 * Recebe o nome da carta e retorna a imagem correta da respectiva carta.
+	 * 
+	 */
 	public Image retornaFotoDaCarta(Carta carta) {
 		Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
 		Numeracao num = carta.getNumeracao();
@@ -802,6 +776,12 @@ public class tabuleiro {
 		return img;
 	}
 
+	/**
+	 * Define um id de destino para a pilha de destino selecionada e chama a função
+	 * de mover carta do backend enviando os ids's respectivos das pilhas de origem
+	 * e destino.
+	 * 
+	 */
 	public void moveCadaCarta(String[] opcoesDeDestino, String nomePilhaOrigem, int idOrigemRecebido) {
 		String[] values1 = opcoesDeDestino;
 		Object selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", nomePilhaOrigem,
@@ -857,6 +837,10 @@ public class tabuleiro {
 		}
 	}
 
+	/**
+	 * Pergunta para onde mover a carta recebida e dá opções personalizadas a
+	 * depender da pilha clicada.
+	 */
 	public void perguntaPraOndeMover(JLabel labelDaCarta, Carta carta, String pilhaClicada) {
 		labelDaCarta.addMouseListener((MouseListener) new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

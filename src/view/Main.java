@@ -283,7 +283,7 @@ public class Main {
 				}
 				// retorna para o menu gráfico
 				else if (opcao.equals("3")) {
-					menu.main(null);
+					Menu.main(null);
 				} else {
 					// Reseta as variáveis se uma opção indisponível for selecionada
 					opcao = "0";

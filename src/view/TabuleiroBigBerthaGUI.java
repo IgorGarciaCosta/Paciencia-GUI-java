@@ -24,8 +24,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
-import java.awt.Label;
 
+/**
+ * Classe para controlar se o update da página vai reiniciar o baralho ou se
+ * apenas ocorreu um movimento de carta.
+ * 
+ */
 class ControladorDeUpdateDePaginaBB {
 	static boolean novoJogoClicado = true;
 
@@ -48,7 +52,7 @@ class ControladorDeUpdateDePaginaBB {
 	}
 }
 
-public class tabuleiroBigBertha {
+public class TabuleiroBigBerthaGUI {
 	static PartidaBigBertha partida = null;
 	PacienciaBigBertha paciencia = null;
 	MonteDeCartasBB pilhaRecebida = null;
@@ -62,7 +66,7 @@ public class tabuleiroBigBertha {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					tabuleiroBigBertha window = new tabuleiroBigBertha();
+					TabuleiroBigBerthaGUI window = new TabuleiroBigBerthaGUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,14 +78,18 @@ public class tabuleiroBigBertha {
 	/**
 	 * Create the application.
 	 */
-	public tabuleiroBigBertha() {
+	public TabuleiroBigBerthaGUI() {
 		initialize();
 	}
 
+	/**
+	 * Atualiza a página cada vez que um movimento é feito.
+	 * 
+	 */
 	public void atualizaPagina() {
 		frame.dispose();
 		frame.setVisible(false);
-		tabuleiroBigBertha.main(null);
+		TabuleiroBigBerthaGUI.main(null);
 	}
 
 	/**
@@ -112,7 +120,7 @@ public class tabuleiroBigBertha {
 				frame.dispose();
 				frame.setVisible(false);
 				partida.encerrarPartida();
-				menu.main(null);
+				Menu.main(null);
 			}
 		});
 
@@ -326,6 +334,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela o descarte com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaDescarteNatela() {
 		pilhaRecebida = paciencia.getMonteDescarteBBBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -342,6 +354,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela o estoque com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaEstoqueNaTela() {
 		pilhaRecebida = paciencia.getMonteEstoqueBBBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -357,6 +373,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela o estoque de reis com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaEstoqueReisNaTela() {
 		pilhaRecebida = paciencia.getMonteEstoqueBBReisBigBertha();
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -372,6 +392,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela as fileiras com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaFileirasNaTela() {
 		pilhaRecebida = paciencia.getMonteFileiraBBBigBertha(0);
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -547,6 +571,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela as fundações com as imagens corretas das cartas.
+	 * 
+	 */
 	public void colocaFundacoesNaTela() {
 		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(0);
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
@@ -639,6 +667,10 @@ public class tabuleiroBigBertha {
 
 	}
 
+	/**
+	 * Imprime na tela as quantidades de cartas que há em cada pilha.
+	 * 
+	 */
 	public void insereQuantDeCartas() {
 
 		int est = paciencia.getMonteEstoqueBBBigBertha().size();
@@ -840,6 +872,12 @@ public class tabuleiroBigBertha {
 		return pilhaRecebida;
 	}
 
+	/**
+	 * Define um id de destino para a pilha de destino selecionada e chama a função
+	 * de mover carta do backend enviando os ids's respectivos das pilhas de origem
+	 * e destino.
+	 * 
+	 */
 	public void moveCadaCarta(String[] opcoesDeDestino, String nomePilhaOrigem, int idOrigemRecebido) {
 		String[] values1 = opcoesDeDestino;
 		Object selected = JOptionPane.showInputDialog(null, "Para onde enviar esta carta?", nomePilhaOrigem,
@@ -934,6 +972,10 @@ public class tabuleiroBigBertha {
 		}
 	}
 
+	/**
+	 * Pergunta para onde mover a carta recebida e dá opções personalizadas a
+	 * depender da pilha clicada.
+	 */
 	public void perguntaPraOndeMover(JLabel labelDaCarta, Carta carta, String pilhaClicada) {
 		labelDaCarta.addMouseListener((MouseListener) new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -1069,6 +1111,10 @@ public class tabuleiroBigBertha {
 		});
 	}
 
+	/**
+	 * Recebe o nome da carta e retorna a imagem correta da respectiva carta.
+	 * 
+	 */
 	public Image retornaFotoDaCarta(Carta carta) {
 		Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
 		Numeracao num = carta.getNumeracao();
