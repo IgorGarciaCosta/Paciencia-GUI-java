@@ -56,6 +56,14 @@ public class TabuleiroBigBerthaGUI {
 	static PartidaBigBertha partida = null;
 	PacienciaBigBertha paciencia = null;
 	MonteDeCartasBB pilhaRecebida = null;
+	int fund1Size = 0;
+	int fund2Size = 0;
+	int fund3Size = 0;
+	int fund4Size = 0;
+	int fund5Size = 0;
+	int fund6Size = 0;
+	int fund7Size = 0;
+	int fund8Size = 0;
 
 	private JFrame frame;
 
@@ -331,6 +339,7 @@ public class TabuleiroBigBerthaGUI {
 		colocaFundacoesNaTela();
 		colocaFileirasNaTela();
 		insereQuantDeCartas();
+		verificaVitoria();
 
 	}
 
@@ -577,6 +586,7 @@ public class TabuleiroBigBerthaGUI {
 	 */
 	public void colocaFundacoesNaTela() {
 		pilhaRecebida = paciencia.getMonteFundacaoBBBigBertha(0);
+
 		Carta carta = pilhaRecebida.visualizarCartaDoTopo();
 		Image img = new ImageIcon(this.getClass().getResource("/cards/cardBack.png")).getImage();
 		if (carta != null) {
@@ -681,6 +691,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(estQnt);
 
 		int fu1 = paciencia.getMonteFundacaoBBBigBertha(0).size();
+		fund1Size = fu1;
 		JLabel fu1Qnt = new JLabel("(" + fu1 + ")");
 		fu1Qnt.setForeground(Color.WHITE);
 		fu1Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -688,6 +699,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu1Qnt);
 
 		int fu2 = paciencia.getMonteFundacaoBBBigBertha(1).size();
+		fund2Size = fu2;
 		JLabel fu2Qnt = new JLabel("(" + fu2 + ")");
 		fu2Qnt.setForeground(Color.WHITE);
 		fu2Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -695,6 +707,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu2Qnt);
 
 		int fu3 = paciencia.getMonteFundacaoBBBigBertha(2).size();
+		fund3Size = fu3;
 		JLabel fu3Qnt = new JLabel("(" + fu3 + ")");
 		fu3Qnt.setForeground(Color.WHITE);
 		fu3Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -702,6 +715,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu3Qnt);
 
 		int fu4 = paciencia.getMonteFundacaoBBBigBertha(3).size();
+		fund4Size = fu4;
 		JLabel fu4Qnt = new JLabel("(" + fu4 + ")");
 		fu4Qnt.setForeground(Color.WHITE);
 		fu4Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -709,6 +723,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu4Qnt);
 
 		int fu5 = paciencia.getMonteFundacaoBBBigBertha(4).size();
+		fund5Size = fu5;
 		JLabel fu5Qnt = new JLabel("(" + fu5 + ")");
 		fu5Qnt.setForeground(Color.WHITE);
 		fu5Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -716,6 +731,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu5Qnt);
 
 		int fu6 = paciencia.getMonteFundacaoBBBigBertha(5).size();
+		fund6Size = fu6;
 		JLabel fu6Qnt = new JLabel("(" + fu6 + ")");
 		fu6Qnt.setForeground(Color.WHITE);
 		fu6Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -723,6 +739,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu6Qnt);
 
 		int fu7 = paciencia.getMonteFundacaoBBBigBertha(6).size();
+		fund7Size = fu7;
 		JLabel fu7Qnt = new JLabel("(" + fu7 + ")");
 		fu7Qnt.setForeground(Color.WHITE);
 		fu7Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -730,6 +747,7 @@ public class TabuleiroBigBerthaGUI {
 		frame.getContentPane().add(fu7Qnt);
 
 		int fu8 = paciencia.getMonteFundacaoBBBigBertha(7).size();
+		fund8Size = fu8;
 		JLabel fu8Qnt = new JLabel("(" + fu8 + ")");
 		fu8Qnt.setForeground(Color.WHITE);
 		fu8Qnt.setFont(new Font("Tahoma", Font.PLAIN, 8));
@@ -1336,4 +1354,23 @@ public class TabuleiroBigBerthaGUI {
 		return img;
 	}
 
+	/**
+	 * Verifica se as fundações estão completas e, caso estejam, anuncia vitória.
+	 * 
+	 */
+	public void verificaVitoria() {
+
+		int totalFund = fund1Size + fund2Size + fund3Size + fund4Size + fund5Size + fund6Size + fund7Size + fund8Size;
+		System.out.print("Ttl: " + totalFund);
+		if (totalFund == 104) {// venceu o jogo
+			JOptionPane.showMessageDialog(null, "Parabéns, você venceu!!", "Yay!", JOptionPane.INFORMATION_MESSAGE);
+			ControladorDeUpdateDePaginaBB.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o
+			// jogo
+			frame.dispose();
+			frame.setVisible(false);
+			partida.encerrarPartida();
+			Menu.main(null);
+
+		}
+	}
 }
