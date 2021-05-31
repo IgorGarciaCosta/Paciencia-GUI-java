@@ -93,6 +93,10 @@ public class PacienciaBigBertha {
 		montesPraInterface = montes;
 	}
 
+	/**
+	 * @param a fundação a ser setada
+	 * @param o id da fundação
+	 */
 	public void setMonteFundacaoBBBigBertha(FundacaoBB FundacaoBB, int i) {
 		switch (i) {
 		case 0:
@@ -124,6 +128,10 @@ public class PacienciaBigBertha {
 
 	}
 
+	/**
+	 * @param a fileira a ser setada
+	 * @param o id da fileira
+	 */
 	public void setMonteFileiraBBBigBertha(FileiraBB FileiraBB, int i) {
 		switch (i) {
 		case 0:
@@ -181,18 +189,35 @@ public class PacienciaBigBertha {
 		return montesPraInterface;
 	}
 
+	/**
+	 * 
+	 * @return o monte de estoque
+	 */
 	public MonteDeCartasBB getMonteEstoqueBBBigBertha() {
 		return EstoqueBB;
 	}
 
+	/**
+	 * 
+	 * @return o monte de estoque de reis
+	 */
 	public MonteDeCartasBB getMonteEstoqueBBReisBigBertha() {
 		return EstoqueBBReis;
 	}
 
+	/**
+	 * 
+	 * @return o monte de descarte
+	 */
 	public MonteDeCartasBB getMonteDescarteBBBigBertha() {
 		return DescarteBB;
 	}
 
+	/**
+	 * 
+	 * @param id da fundação que se quer obter
+	 * @return a fundação do respectivo id
+	 */
 	public MonteDeCartasBB getMonteFundacaoBBBigBertha(int i) {
 		switch (i) {
 		case 0:
@@ -215,6 +240,11 @@ public class PacienciaBigBertha {
 		return FundacaoBB1;
 	}
 
+	/**
+	 * 
+	 * @param id da fileira que se quer obter
+	 * @return a fileira do respectivo id
+	 */
 	public MonteDeCartasBB getMonteFileiraBBBigBertha(int i) {
 		switch (i) {
 		case 0:
@@ -252,7 +282,11 @@ public class PacienciaBigBertha {
 		return FileiraBB1;
 	}
 
-	// recebe o index da carta e o num da FileiraBB
+	/**
+	 * 
+	 * @param index  da carta
+	 * @param número da fileira
+	 */
 	public Carta getCarta(int i, int FileiraBB) {
 
 		switch (FileiraBB) {
@@ -359,19 +393,19 @@ public class PacienciaBigBertha {
 			}
 			return true;
 		} else { // se a origem não é o EstoqueBB
-			
+
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
 			}
-			
-			//envio para o estoque de Reis
-			if(idDestino==26) {
-				if(destino.recebeCartaEstRei(c)) {
+
+			// envio para o estoque de Reis
+			if (idDestino == 26) {
+				if (destino.recebeCartaEstRei(c)) {
 					origem.retirarCartaDoTopo();
 					return true;
 				}
-				
+
 			}
 			return false;
 		}

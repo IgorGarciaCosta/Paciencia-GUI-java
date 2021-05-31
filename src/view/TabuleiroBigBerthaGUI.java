@@ -1361,7 +1361,7 @@ public class TabuleiroBigBerthaGUI {
 	public void verificaVitoria() {
 
 		int totalFund = fund1Size + fund2Size + fund3Size + fund4Size + fund5Size + fund6Size + fund7Size + fund8Size;
-		System.out.print("Ttl: " + totalFund);
+		
 		if (totalFund == 104) {// venceu o jogo
 			JOptionPane.showMessageDialog(null, "Parabéns, você venceu!!", "Yay!", JOptionPane.INFORMATION_MESSAGE);
 			ControladorDeUpdateDePaginaBB.setVar(true);// setar aqui para true evita um erro ao iniciar novamente o

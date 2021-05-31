@@ -81,6 +81,10 @@ public class Paciencia {
 		montesPraInterface = montes;
 	}
 
+	/**
+	 * @param a fundação a ser setada
+	 * @param o id da fundação
+	 */
 	public void setMonteFundacao(Fundacao fundacao, int i) {
 		switch (i) {
 		case 0:
@@ -98,6 +102,10 @@ public class Paciencia {
 		}
 	}
 
+	/**
+	 * @param a fileira a ser setada
+	 * @param o id da fileira
+	 */
 	public void setMonteFileira(Fileira fileira, int i) {
 		switch (i) {
 		case 0:
@@ -131,14 +139,27 @@ public class Paciencia {
 		return montesPraInterface;
 	}
 
+	/**
+	 * 
+	 * @return o monte de estoque
+	 */
 	public MonteDeCartas getMonteEstoque() {
 		return estoque;
 	}
 
+	/**
+	 * 
+	 * @return o monte de descarte
+	 */
 	public MonteDeCartas getMonteDescarte() {
 		return descarte;
 	}
 
+	/**
+	 * 
+	 * @param id da fundação que se quer obter
+	 * @return a fundação do respectivo id
+	 */
 	public MonteDeCartas getMonteFundacao(int i) {
 		switch (i) {
 		case 0:
@@ -153,6 +174,11 @@ public class Paciencia {
 		return fundacao1;
 	}
 
+	/**
+	 * 
+	 * @param id da fileira que se quer obter
+	 * @return a fileira do respectivo id
+	 */
 	public MonteDeCartas getMonteFileira(int i) {
 		switch (i) {
 		case 0:
@@ -173,7 +199,11 @@ public class Paciencia {
 		return fileira1;
 	}
 
-	// recebe o index da carta e o num da fileira
+	/**
+	 * 
+	 * @param index  da carta
+	 * @param número da fileira
+	 */
 	public Carta getCarta(int i, int fileira) {
 
 		switch (fileira) {
@@ -226,7 +256,6 @@ public class Paciencia {
 
 		MonteDeCartas origem = montes.get(idOrigem - 1);
 		MonteDeCartas destino = montes.get(idDestino - 1);
-		
 
 		Carta c = origem.visualizarCartaDoTopo();
 		if (c == null) {

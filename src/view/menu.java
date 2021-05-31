@@ -89,7 +89,7 @@ public class Menu {
 		btnFinalizar.setBounds(175, 209, 116, 23);
 		frame.getContentPane().add(btnFinalizar);
 		
-		JButton btnNormalSI = new JButton("Fechar interface gr\u00E1fica");
+		JButton btnNormalSI = new JButton("Retornar para o console");
 		btnNormalSI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
